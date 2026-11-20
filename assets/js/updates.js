@@ -49,7 +49,7 @@
         why.classList.remove('is-pinned');
       }
       if (!pinned) { update(); return; }
-      distance = Math.max(0, track.scrollHeight - (viewport.clientHeight - 64) + 8);
+      distance = Math.max(0, track.scrollHeight - (viewport.clientHeight - 78) + 8);
       /* A little dwell per card so fast scrollers still see each one. */
       var dwell = Math.round(window.innerHeight * 0.12) * cards.length;
       var newH = (window.innerHeight - pinTop + distance + dwell) + 'px';
