@@ -82,6 +82,9 @@
     var fill = why.querySelector('.h-why-fill');
     var navbar = document.getElementById('navbar');
     var left = why.querySelector('.h-why-left');
+    var topbarEl = document.querySelector('.topbar');
+    var headerTop = function () { return (topbarEl ? topbarEl.offsetHeight : 0) + (navbar ? navbar.offsetHeight : 0); };
+    var lastPinTop = -1;
     var distance = 0, pinned = false, active = -1;
     var desktop = window.matchMedia('(min-width: 1025px)');
 
@@ -99,7 +102,7 @@
       why.classList.toggle('is-pinned', pinned);
       track.style.transform = '';
       why.style.height = '';
-      var pinTop = navbar ? navbar.offsetHeight : 0;
+      var pinTop = headerTop(); lastPinTop = pinTop;
       why.style.setProperty('--pin-top', pinTop + 'px');
       /* If the left column still can't fit on this screen, don't pin:
          the section then scrolls normally and nothing gets cut off. */
@@ -129,7 +132,9 @@
         return;
       }
       var rect = why.getBoundingClientRect();
-      var pinTop = navbar ? navbar.offsetHeight : 0;
+      var pinTop = headerTop();
+      /* Header shrinks after the first scroll: re-measure so nothing hides under it. */
+      if (pinTop !== lastPinTop) { layout(); return; }
       var total = why.offsetHeight - (window.innerHeight - pinTop);
       var p = total > 0 ? Math.min(1, Math.max(0, (pinTop - rect.top) / total)) : 0;
       track.style.transform = 'translate3d(0,' + (-p * distance) + 'px,0)';

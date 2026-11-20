@@ -10,10 +10,20 @@
 
   /* ---------- Sticky navbar shrink on scroll ---------- */
   var navbar = document.getElementById('navbar');
+  var topbar = document.querySelector('.topbar');
+  function setTopbarHeight() {
+    if (topbar) document.documentElement.style.setProperty('--topbar-h', topbar.offsetHeight + 'px');
+  }
+  setTopbarHeight();
+  window.addEventListener('resize', setTopbarHeight);
+  if (topbar && 'ResizeObserver' in window) new ResizeObserver(setTopbarHeight).observe(topbar);
+
   function onScroll() {
-    if (!navbar) return;
-    if (window.scrollY > 12) navbar.classList.add('scrolled');
-    else navbar.classList.remove('scrolled');
+    var y = window.scrollY;
+    if (navbar) navbar.classList.toggle('scrolled', y > 12);
+    /* Hysteresis so a header that shrinks on scroll can't flicker at the threshold. */
+    if (y > 60) document.body.classList.add('is-scrolled');
+    else if (y < 5) document.body.classList.remove('is-scrolled');
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();

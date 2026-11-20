@@ -130,20 +130,18 @@
 .h-svc p { font-size: 15px; color: var(--ink); opacity: .8; line-height: 1.65; }
 
 /* ---------- Why choose us (pinned) ---------- */
-.h-why { position: relative; background: radial-gradient(ellipse at 20% 10%, #13285a 0%, #0b1838 55%, #081230 100%); }
+.h-why { position: relative; background: radial-gradient(ellipse at 20% 10%, var(--navy-2) 0%, var(--navy) 50%, var(--navy-deep) 100%); }
 .h-why-pin { padding: 64px 0; }
 .h-why-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 64px; align-items: start; }
-.h-why-left .eyebrow { color: #3aa0d8; }
+.h-why-left .eyebrow { color: var(--gold-light); }
 .h-why-count { display: flex; align-items: baseline; gap: 6px; margin: 10px 0 14px; }
-.h-why-current { font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 700; color: #3aa0d8; line-height: 1; }
+.h-why-current { font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 700; color: var(--gold-light); line-height: 1; }
 .h-why-total { font-size: 14px; font-weight: 600; color: rgba(255,255,255,.55); }
 .h-why-bar { position: relative; align-self: center; width: 140px; height: 2px; margin-left: 14px; background: rgba(255,255,255,.15); }
-.h-why-fill { position: absolute; inset: 0 auto 0 0; width: 16.66%; background: linear-gradient(90deg, #e11d48, #3aa0d8); transition: width .35s var(--ease); }
+.h-why-fill { position: absolute; inset: 0 auto 0 0; width: 16.66%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); transition: width .35s var(--ease); }
 .h-why-left h2 { color: #fff; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.15; margin-bottom: 16px; }
-.h-why-left h2 em { color: #3aa0d8; font-style: normal; }
+.h-why-left h2 em { color: var(--gold-light); font-style: normal; }
 .h-why-left p { color: rgba(255,255,255,.75); font-size: 15.5px; line-height: 1.75; max-width: 440px; margin-bottom: 26px; }
-.h-why-left .btn-gold { background: #e11d48; border-color: #e11d48; color: #fff; }
-.h-why-left .btn-gold:hover { background: #be123c; border-color: #be123c; box-shadow: 0 10px 26px rgba(225,29,72,.35); }
 .h-why-gov-label { margin: 34px 0 12px; font-size: 11.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.6); }
 .h-why-gov { display: flex; flex-wrap: wrap; gap: 10px; }
 .h-why-gov img, .h-why-gov span { width: 50px; height: 50px; border-radius: 50%; background: #fff; object-fit: contain; padding: 5px; }
@@ -154,18 +152,18 @@
   background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); transition: background .35s, border-color .35s, opacity .35s, transform .35s;
   opacity: .55;
 }
-.h-why-card.is-active { opacity: 1; background: rgba(58,160,216,.10); border-color: rgba(58,160,216,.55); transform: translateX(-6px); }
-.h-why-num { font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 700; color: #3aa0d8; padding-top: 3px; }
-.h-why-icon { width: 46px; height: 46px; border-radius: 10px; background: #e11d48; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 19px; }
+.h-why-card.is-active { opacity: 1; background: rgba(227,178,60,.08); border-color: rgba(227,178,60,.6); transform: translateX(-6px); }
+.h-why-num { font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 700; color: var(--gold-light); padding-top: 3px; }
+.h-why-icon { width: 46px; height: 46px; border-radius: 10px; background: var(--gold); color: var(--navy-deep); display: flex; align-items: center; justify-content: center; font-size: 19px; }
 .h-why-card h3 { color: #fff; font-size: 19px; margin-bottom: 6px; }
 .h-why-card p { color: rgba(255,255,255,.72); font-size: 14.5px; line-height: 1.65; }
 
 /* Desktop pinning: JS sets .is-pinned and the section height.
    The left column stays still, only the cards move. */
-.h-why.is-pinned .h-why-pin { position: sticky; top: var(--pin-top, 76px); height: calc(100vh - var(--pin-top, 76px)); padding: 0; display: flex; align-items: center; overflow: hidden; }
+.h-why.is-pinned .h-why-pin { position: sticky; top: var(--pin-top, 76px); height: calc(100vh - var(--pin-top, 76px)); padding: 28px 0 0; display: flex; align-items: flex-start; overflow: hidden; }
 .h-why.is-pinned .h-why-pin > .container { width: 100%; }
-.h-why.is-pinned .h-why-grid { align-items: center; }
-.h-why.is-pinned .h-why-viewport { height: calc(100vh - var(--pin-top, 76px) - 96px); overflow: hidden; padding: 32px 8px 32px 10px;
+.h-why.is-pinned .h-why-grid { align-items: start; }
+.h-why.is-pinned .h-why-viewport { height: calc(100vh - var(--pin-top, 76px) - 44px); margin-top: -28px; overflow: hidden; padding: 32px 8px 32px 10px;
   -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 6%, #000 94%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0, #000 6%, #000 94%, transparent 100%); }
 
 /* Shorter laptop screens: tighten the pinned left column so it fits. */
@@ -178,7 +176,6 @@
   .h-why.is-pinned .h-why-gov img, .h-why.is-pinned .h-why-gov span { width: 42px; height: 42px; }
   .h-why.is-pinned .h-why-left .btn { min-height: 44px; padding: 12px 24px; }
   .h-why.is-pinned .h-why-card { padding: 16px 20px; }
-  .h-why.is-pinned .h-why-viewport { height: calc(100vh - var(--pin-top, 76px) - 48px); }
 }
 @media (min-width: 1025px) and (max-height: 700px) {
   .h-why.is-pinned .h-why-left p { display: none; }
@@ -196,14 +193,18 @@
   box-shadow: 0 10px 30px rgba(11,17,32,.08); display: flex; flex-direction: column; align-items: center; gap: 12px;
   transition: transform .6s cubic-bezier(.2,.8,.2,1), box-shadow .6s;
 }
+@property --arc { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+/* Two gold arcs travel round each card continuously, like the reference design. */
 .h-step::before {
-  content: ''; position: absolute; inset: -9px; border-radius: 120px; border: 3px solid transparent; pointer-events: none;
-  border-top-color: var(--gold); border-left-color: var(--gold); opacity: .18; transition: opacity .6s, transform .9s cubic-bezier(.2,.8,.2,1);
-  transform: rotate(-8deg);
+  content: ''; position: absolute; inset: -9px; border-radius: 120px; padding: 3px; pointer-events: none;
+  background: conic-gradient(from var(--arc), var(--gold) 0deg 70deg, transparent 70deg 180deg, var(--gold) 180deg 250deg, transparent 250deg 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: arcSpin 7s linear infinite;
 }
-.h-step:nth-child(even)::before { border-color: transparent; border-bottom-color: var(--gold); border-right-color: var(--gold); }
-.h-step.is-on { transform: translateY(-8px); box-shadow: 0 22px 44px rgba(11,17,32,.14); }
-.h-step.is-on::before { opacity: 1; transform: rotate(0); }
+.h-step:nth-child(even)::before { animation-direction: reverse; }
+.h-step.is-on::before { filter: drop-shadow(0 0 4px rgba(227,178,60,.55)); }
+@keyframes arcSpin { to { --arc: 360deg; } }
 .h-step-no {
   position: absolute; top: -17px; left: 50%; transform: translateX(-50%); width: 34px; height: 34px; border-radius: 50%;
   background: #fff; border: 2px solid #d9dfea; color: var(--muted-2); font-weight: 800; font-size: 14px;
@@ -392,7 +393,7 @@
 .h-why-current.flip { animation: countFlip .45s cubic-bezier(.2,.8,.2,1); }
 @keyframes countFlip { from { opacity: 0; transform: translateY(60%) rotateX(60deg); } to { opacity: 1; transform: none; } }
 .h-why-card .h-why-icon { transition: transform .5s cubic-bezier(.3,1.6,.5,1), box-shadow .4s; }
-.h-why-card.is-active .h-why-icon { transform: scale(1.1) rotate(-6deg); box-shadow: 0 8px 22px rgba(225,29,72,.45); }
+.h-why-card.is-active .h-why-icon { transform: scale(1.1) rotate(-6deg); box-shadow: 0 8px 22px rgba(200,150,10,.45); }
 
 /* Team: one consistent, professional treatment for photos shot on different backgrounds */
 .h-member-photo, .h-team-lead-photo { position: relative; }
@@ -417,7 +418,7 @@
   .h-journey-fill { transform-origin: center top; transform: scaleY(var(--p, 0)); }
   .h-steps { grid-template-columns: 1fr; gap: 22px; }
   .h-step { margin-left: 60px; border-radius: 22px; padding: 22px 22px 22px 96px; min-height: 0; text-align: left; align-items: flex-start; gap: 6px; }
-  .h-step::before { display: none; }
+  .h-step::before { border-radius: 30px; }
   .h-step.is-on { transform: translateX(6px); }
   .h-step-no { left: -56px; top: 22px; transform: none; }
   .h-step-icon { position: absolute; left: 20px; top: 22px; width: 56px; height: 56px; font-size: 20px; }
@@ -435,6 +436,7 @@
   .hdr.reveal h2 { clip-path: none; transform: none; transition: none; }
   .hdr.reveal .gold-rule, .h-about-media .h-about-frame, .h-about-badge { transform: none; opacity: 1; transition: none; }
   .h-step, .h-step::before, .h-step-icon { transition: none; }
+  .h-step::before { animation: none; }
   .h-step-final.is-stamped .h-stamp { animation: none; opacity: .92; transform: rotate(-14deg); }
   .h-step-final.is-stamped { animation: none; }
   .h-why-current.flip { animation: none; }
@@ -482,3 +484,9 @@
 .h-reg-logo.is-dark { background: var(--navy); }
 .h-reg-logo.is-pair { gap: 8px; }
 .h-reg-logo.is-pair img { width: 46%; }
+
+/* Sticky header on phones: drop the "Call Us" block once the page is scrolled. */
+@media (max-width: 768px) {
+  body.is-scrolled .topbar-home .topbar-call { display: none; }
+  body.is-scrolled .topbar-home .topbar-inner { padding: 8px 12px; }
+}
