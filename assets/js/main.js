@@ -29,7 +29,23 @@
   function onScroll() {
     var max = document.documentElement.scrollHeight - window.innerHeight;
     progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ')';
-    if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 12);
+    var y = window.scrollY;
+    if (navbar) navbar.classList.toggle('scrolled', y > 12);
+    /* Header leaves with the page, then slides back down from the top once
+       it is out of view. Hysteresis stops it flickering at the edges. */
+    var hdr = navbar ? navbar.parentElement : null;
+    if (hdr && hdr.tagName === 'HEADER') {
+      var fixed = document.body.classList.contains('hdr-fixed');
+      if (!fixed) {
+        var h = (topbar ? topbar.offsetHeight : 0) + hdr.offsetHeight;
+        if (y > h + 120) {
+          document.documentElement.style.setProperty('--hdr-h', h + 'px');
+          document.body.classList.add('hdr-fixed');
+        }
+      } else if (y < 4) {
+        document.body.classList.remove('hdr-fixed');
+      }
+    }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
