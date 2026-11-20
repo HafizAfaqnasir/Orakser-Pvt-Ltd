@@ -404,6 +404,8 @@ textarea:focus-visible, summary:focus-visible {
 .hero-sub-breadcrumb a { color: var(--gold-deep); font-weight: 600; }
 .hero-sub-navy .hero-sub-breadcrumb a { color: var(--gold-light); }
 .hero-sub-breadcrumb span { color: var(--muted-2); }
+.hero-sub-breadcrumb strong { color: var(--navy); font-weight: 600; }
+.hero-sub-navy .hero-sub-breadcrumb strong { color: rgba(255,255,255,0.9); }
 .hero-sub-inner { position: relative; z-index: 2; display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center; max-width: 980px; }
 .hero-sub-icon {
   width: 84px; height: 84px; border-radius: 22px; display: flex; align-items: center; justify-content: center;

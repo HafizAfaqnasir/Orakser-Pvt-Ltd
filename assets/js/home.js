@@ -258,3 +258,20 @@
     });
   }
 })();
+/* ---------- Regulator cards: staggered reveal ---------- */
+(function () {
+  'use strict';
+  var cards = document.querySelectorAll('.h-reg');
+  if (!cards.length) return;
+  if (!('IntersectionObserver' in window)) { cards.forEach(function (c) { c.classList.add('in-view'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var i = Array.prototype.indexOf.call(cards, e.target);
+      e.target.style.setProperty('--d', ((i % 8) * 60) + 'ms');
+      e.target.classList.add('in-view');
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(function (c) { io.observe(c); });
+})();
