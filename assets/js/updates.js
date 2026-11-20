@@ -52,7 +52,11 @@
       distance = Math.max(0, track.scrollHeight - (viewport.clientHeight - 64) + 8);
       /* A little dwell per card so fast scrollers still see each one. */
       var dwell = Math.round(window.innerHeight * 0.12) * cards.length;
-      why.style.height = (window.innerHeight - pinTop + distance + dwell) + 'px';
+      var newH = (window.innerHeight - pinTop + distance + dwell) + 'px';
+      var changed = why.style.height !== newH;
+      why.style.height = newH;
+      /* GSAP measured the page before this section grew: let it re-measure. */
+      if (changed && window.ScrollTrigger) requestAnimationFrame(function () { window.ScrollTrigger.refresh(); });
       update();
     };
 
