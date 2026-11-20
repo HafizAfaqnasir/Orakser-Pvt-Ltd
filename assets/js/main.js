@@ -8,50 +8,61 @@
 
   var WA_NUMBER = '923000091881'; /* +92-300-0091881, wa.me format */
 
-  /* ---------- Sticky navbar shrink on scroll ---------- */
+  /* ---------- Two-header system ----------
+     The main navbar scrolls away with the page. Once it is out of view, a
+     compact copy slides down from the top and stays fixed. */
   var navbar = document.getElementById('navbar');
-  var topbar = document.querySelector('.topbar');
-  function setTopbarHeight() {
-    if (topbar) document.documentElement.style.setProperty('--topbar-h', topbar.offsetHeight + 'px');
+  var fixedNav = null;
+  if (navbar) {
+    fixedNav = navbar.cloneNode(true);
+    fixedNav.removeAttribute('id');
+    fixedNav.classList.add('navbar-fixed');
+    fixedNav.setAttribute('aria-label', 'Primary (compact)');
+    fixedNav.querySelectorAll('[id]').forEach(function (el) { el.removeAttribute('id'); });
+    fixedNav.inert = true;
+    document.body.insertBefore(fixedNav, document.body.firstChild);
   }
-  setTopbarHeight();
-  window.addEventListener('resize', setTopbarHeight);
-  if (topbar && 'ResizeObserver' in window) new ResizeObserver(setTopbarHeight).observe(topbar);
+  /* Thin red-to-blue reading progress bar along the top edge */
+  var progress = document.createElement('div');
+  progress.className = 'scroll-progress';
+  progress.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(progress);
 
   function onScroll() {
-    var y = window.scrollY;
-    if (navbar) navbar.classList.toggle('scrolled', y > 12);
-    /* Hysteresis so a header that shrinks on scroll can't flicker at the threshold. */
-    if (y > 60) document.body.classList.add('is-scrolled');
-    else if (y < 5) document.body.classList.remove('is-scrolled');
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ')';
+    if (!navbar || !fixedNav) return;
+    var show = window.scrollY > navbar.offsetTop + navbar.offsetHeight + 40;
+    fixedNav.classList.toggle('show', show);
+    fixedNav.inert = !show;
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
   /* ---------- Mobile menu ---------- */
-  var hamburger = document.getElementById('hamburger');
+  var hamburgers = document.querySelectorAll('.hamburger');
   var mobileNav = document.getElementById('mobileNav');
   var navOverlay = document.getElementById('navOverlay');
   var mobileNavClose = document.getElementById('mobileNavClose');
 
   function openMobileNav() {
-    hamburger && hamburger.classList.add('open');
+    hamburgers.forEach(function (b) { b.classList.add('open'); b.setAttribute('aria-expanded', 'true'); });
     mobileNav && mobileNav.classList.add('open');
     navOverlay && navOverlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
   function closeMobileNav() {
-    hamburger && hamburger.classList.remove('open');
+    hamburgers.forEach(function (b) { b.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); });
     mobileNav && mobileNav.classList.remove('open');
     navOverlay && navOverlay.classList.remove('open');
     document.body.style.overflow = '';
   }
-  if (hamburger) {
-    hamburger.addEventListener('click', function () {
+  hamburgers.forEach(function (btn) {
+    btn.addEventListener('click', function () {
       if (mobileNav && mobileNav.classList.contains('open')) closeMobileNav();
       else openMobileNav();
     });
-  }
+  });
   navOverlay && navOverlay.addEventListener('click', closeMobileNav);
   mobileNavClose && mobileNavClose.addEventListener('click', closeMobileNav);
 
@@ -123,20 +134,38 @@
   });
 
   /* ---------- Service catalog filter tabs ---------- */
+  /* data-category may hold several space-separated categories, e.g. "ip popular" */
   document.querySelectorAll('.filter-tabs').forEach(function (tabs) {
     var cards = document.querySelectorAll('[data-category]');
+    function applyFilter(cat) {
+      cards.forEach(function (card) {
+        var cats = (card.getAttribute('data-category') || '').split(/\s+/);
+        var match = cat === 'all' || cats.indexOf(cat) !== -1;
+        card.style.display = match ? '' : 'none';
+      });
+    }
+    var initial = tabs.getAttribute('data-default');
+    if (initial) applyFilter(initial);
     tabs.addEventListener('click', function (e) {
       var btn = e.target.closest('.filter-tab');
       if (!btn) return;
       tabs.querySelectorAll('.filter-tab').forEach(function (b) { b.classList.remove('active'); });
       btn.classList.add('active');
-      var cat = btn.getAttribute('data-filter');
-      cards.forEach(function (card) {
-        var match = cat === 'all' || card.getAttribute('data-category') === cat;
-        card.style.display = match ? '' : 'none';
-      });
+      applyFilter(btn.getAttribute('data-filter'));
     });
   });
+
+  /* ---------- Mobile sticky action bar (Call / WhatsApp / Free Quote) ---------- */
+  if (!document.querySelector('.m-actionbar')) {
+    var bar = document.createElement('nav');
+    bar.className = 'm-actionbar';
+    bar.setAttribute('aria-label', 'Quick contact');
+    bar.innerHTML =
+      '<a class="mab-call" href="tel:+922135897959"><i class="fas fa-phone" aria-hidden="true"></i> Call</a>' +
+      '<a class="mab-wa" href="https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent('Hello, I need consultation from Orakser.') + '" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>' +
+      '<a class="mab-quote" href="https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent('Hello, I would like a free quote. Service needed: ') + '" target="_blank" rel="noopener"><i class="fas fa-file-signature" aria-hidden="true"></i> Free Quote</a>';
+    document.body.appendChild(bar);
+  }
 
   /* ============================================================
      WHATSAPP FORM SUBMISSION
@@ -148,7 +177,8 @@
     var lines = ['*' + heading + '*', ''];
     var labels = {
       name: 'Name', phone: 'Phone', email: 'Email', service: 'Service Required',
-      city: 'Preferred Office', message: 'Message', company: 'Company Name'
+      city: 'Preferred Office', message: 'Message', company: 'Company Name',
+      brand: 'Brand Name to Search', industry: 'Business Type'
     };
     Array.prototype.forEach.call(form.elements, function (field) {
       if (!field.name || field.type === 'submit' || field.type === 'button') return;
@@ -187,28 +217,68 @@
     return valid;
   }
 
+  /* A form button may carry data-channel="email" or "whatsapp" (the default).
+     Email: if the form has data-endpoint, the fields are POSTed there as JSON
+     (plug in your backend / form service); otherwise the visitor's email app
+     opens with the message pre-filled to info@orakser.com. */
+  var EMAIL_TO = 'info@orakser.com';
+
   document.querySelectorAll('form.wa-form').forEach(function (form) {
     form.setAttribute('novalidate', 'novalidate');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!validateForm(form)) return;
 
+      var submitter = e.submitter || form.querySelector('button[type="submit"]');
+      var channel = (submitter && submitter.getAttribute('data-channel')) || 'whatsapp';
       var message = buildWaMessage(form);
-      var url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(message);
-
       var successBox = form.querySelector('.form-success');
-      if (successBox) successBox.classList.add('show');
-      var submitBtn = form.querySelector('button[type="submit"]');
-      if (submitBtn) { submitBtn.disabled = true; submitBtn.style.opacity = '0.7'; }
+      var buttons = form.querySelectorAll('button[type="submit"]');
+      function setBusy(busy) {
+        buttons.forEach(function (b) { b.disabled = busy; b.style.opacity = busy ? '0.7' : ''; });
+      }
+      function done(text) {
+        if (successBox) {
+          var label = successBox.querySelector('.form-success-text');
+          if (label && text) label.textContent = text;
+          successBox.classList.add('show');
+          setTimeout(function () { successBox.classList.remove('show'); }, 6000);
+        }
+        form.reset();
+        setBusy(false);
+      }
 
+      setBusy(true);
+
+      if (channel === 'email') {
+        var endpoint = form.getAttribute('data-endpoint');
+        if (endpoint && window.fetch) {
+          var data = {};
+          Array.prototype.forEach.call(form.elements, function (f) { if (f.name) data[f.name] = f.value; });
+          fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
+            .then(function (r) { if (!r.ok) throw new Error(r.status); done('Thank you! Our team will contact you within 2 hours.'); })
+            .catch(function () { setBusy(false); window.location.href = mailtoUrl(form, message); });
+        } else {
+          window.location.href = mailtoUrl(form, message);
+          done('Your email app is opening with your request. Just press send.');
+        }
+        return;
+      }
+
+      var url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(message);
+      if (successBox) successBox.classList.add('show');
       setTimeout(function () {
         window.open(url, '_blank', 'noopener');
-        form.reset();
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.style.opacity = ''; }
-        setTimeout(function () { successBox && successBox.classList.remove('show'); }, 6000);
+        done('Opening WhatsApp…');
       }, 700);
     });
   });
+
+  function mailtoUrl(form, message) {
+    var subject = form.getAttribute('data-wa-heading') || 'New Inquiry — Orakser Website';
+    return 'mailto:' + EMAIL_TO + '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(message.replace(/\*/g, '').replace(/_/g, ''));
+  }
 
   /* ---------- Live-clear error state while typing ---------- */
   document.querySelectorAll('.field input, .field select, .field textarea').forEach(function (el) {
