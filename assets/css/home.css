@@ -479,3 +479,6 @@
   .h-reg { opacity: 1; transform: none; transition: none; }
   .h-reg-logo::after, .h-reg-logo { transition: none; }
 }
+.h-reg-logo.is-dark { background: var(--navy); }
+.h-reg-logo.is-pair { gap: 8px; }
+.h-reg-logo.is-pair img { width: 46%; }
