@@ -15,7 +15,39 @@
     var bgs = hero.querySelectorAll('.h-hero-bg');
     var texts = hero.querySelectorAll('.h-hero-text');
     var dots = hero.querySelectorAll('.h-hero-dots button');
-    var current = 0, timer = null;
+    var current = 0;
+
+    /* Wrap every word of each headline so it can rise out of a mask.
+       Elements like <em> and <br> are kept as they are. */
+    var wordIndex = 0;
+    var splitWords = function (node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (child) {
+        if (child.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+            var w = document.createElement('span'); w.className = 'w';
+            var inner = document.createElement('span');
+            inner.textContent = part;
+            inner.style.setProperty('--d', (wordIndex++ * 70) + 'ms');
+            w.appendChild(inner); frag.appendChild(w);
+          });
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1 && child.tagName !== 'BR') {
+          splitWords(child);
+        }
+      });
+    };
+    Array.prototype.forEach.call(texts, function (t) {
+      var h1 = t.querySelector('h1');
+      if (!h1) return;
+      var label = '';
+      Array.prototype.forEach.call(h1.childNodes, function (n) { label += n.nodeName === 'BR' ? ' ' : n.textContent; });
+      h1.setAttribute('aria-label', label.replace(/\s+/g, ' ').trim());
+      wordIndex = 0; splitWords(h1);
+      Array.prototype.forEach.call(h1.querySelectorAll('.w'), function (w) { w.setAttribute('aria-hidden', 'true'); });
+    });
 
     var go = function (i) {
       var n = texts.length;
@@ -24,17 +56,20 @@
         Array.prototype.forEach.call(list, function (el, k) { el.classList.toggle('is-active', k === current); });
       });
     };
-    var restart = function () {
-      if (reduceMotion) return;
-      clearInterval(timer);
-      timer = setInterval(function () { go(current + 1); }, 6500);
-    };
-    hero.querySelector('.h-hero-prev').addEventListener('click', function () { go(current - 1); restart(); });
-    hero.querySelector('.h-hero-next').addEventListener('click', function () { go(current + 1); restart(); });
-    Array.prototype.forEach.call(dots, function (d, k) { d.addEventListener('click', function () { go(k); restart(); }); });
-    /* Pause while someone is filling in the form. */
-    hero.addEventListener('focusin', function () { clearInterval(timer); });
-    restart();
+    /* Autoplay is driven by the active dot's fill animation, so the
+       timer bar and the slide change always stay in sync. */
+    hero.querySelector('.h-hero-dots').addEventListener('animationend', function (e) {
+      if (e.animationName === 'dotFill') go(current + 1);
+    });
+    hero.querySelector('.h-hero-prev').addEventListener('click', function () { go(current - 1); });
+    hero.querySelector('.h-hero-next').addEventListener('click', function () { go(current + 1); });
+    Array.prototype.forEach.call(dots, function (d, k) { d.addEventListener('click', function () { go(k); }); });
+    /* Pause while someone is filling in the form; resume when they leave it. */
+    var form = hero.querySelector('.h-hero-form');
+    form.addEventListener('focusin', function () { hero.classList.add('is-paused'); });
+    form.addEventListener('focusout', function () {
+      setTimeout(function () { if (!form.contains(document.activeElement)) hero.classList.remove('is-paused'); }, 50);
+    });
   }
 
   /* ---------- 2. Why Choose Us — pinned scroll ---------- */
@@ -55,6 +90,7 @@
       active = i;
       Array.prototype.forEach.call(cards, function (c, k) { c.classList.toggle('is-active', k === i); });
       currentEl.textContent = (i + 1 < 10 ? '0' : '') + (i + 1);
+      currentEl.classList.remove('flip'); void currentEl.offsetWidth; currentEl.classList.add('flip');
       fill.style.width = ((i + 1) / cards.length * 100) + '%';
     };
 
@@ -168,4 +204,57 @@
     slider.addEventListener('mouseleave', restart);
     restart();
   });
+
+  /* ---------- 4. Reading progress line ---------- */
+  var bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  bar.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(bar);
+  var paintBar = function () {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')';
+  };
+
+  /* ---------- 5. Process journey: line fills, steps light up, stamp lands ---------- */
+  var journey = document.querySelector('.h-journey');
+  var steps = journey ? journey.querySelectorAll('.h-step') : [];
+  var paintJourney = function () {
+    if (!journey) return;
+    var r = journey.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var p = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / Math.max(r.height * 0.9, vh * 0.55)));
+    if (reduceMotion && r.top < vh) p = 1;
+    journey.style.setProperty('--p', p.toFixed(3));
+    Array.prototype.forEach.call(steps, function (s, k) {
+      var on = p >= (k / (steps.length - 1)) * 0.92 + 0.02;
+      s.classList.toggle('is-on', on);
+      if (s.classList.contains('h-step-final') && on) s.classList.add('is-stamped');
+    });
+  };
+
+  var queued = false;
+  var onScrollFrame = function () {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(function () { queued = false; paintBar(); paintJourney(); });
+  };
+  window.addEventListener('scroll', onScrollFrame, { passive: true });
+  window.addEventListener('resize', onScrollFrame);
+  onScrollFrame();
+
+  /* ---------- 6. Service cards: cursor-follow tilt (mouse only) ---------- */
+  if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.h-svc').forEach(function (card) {
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        card.style.setProperty('--ry', ((x - 0.5) * 10).toFixed(2) + 'deg');
+        card.style.setProperty('--rx', ((0.5 - y) * 8).toFixed(2) + 'deg');
+        card.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+        card.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+        card.classList.add('is-tilting');
+      });
+      card.addEventListener('pointerleave', function () { card.classList.remove('is-tilting'); });
+    });
+  }
 })();
