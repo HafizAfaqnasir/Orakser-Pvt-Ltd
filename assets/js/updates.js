@@ -23,7 +23,11 @@
     var desktop = window.matchMedia('(min-width: 1025px)');
     var distance = 0, pinned = false, active = -1, lastPinTop = -1;
 
-    var headerTop = function () { return (topbar ? topbar.offsetHeight : 0) + (navbar ? navbar.offsetHeight : 0); };
+    /* Only the menu bar is pinned once scrolled (the topbar scrolls away). */
+    var headerTop = function () {
+      var nav = navbar ? navbar.offsetHeight : 0;
+      return document.body.classList.contains('hdr-fixed') ? nav : (topbar ? topbar.offsetHeight : 0) + nav;
+    };
 
     var setActive = function (i) {
       if (i === active) return;

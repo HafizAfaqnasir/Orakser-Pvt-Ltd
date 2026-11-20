@@ -1209,14 +1209,13 @@ main { overflow-x: clip; }
 /* The whole header (topbar + navbar) stays pinned while scrolling, on every page. */
 .topbar { position: relative; z-index: 1001; }
 body > header { position: relative; z-index: 1000; }
-/* Once the page is scrolled past the header, the header comes back down
-   from the top with a slow slide and stays pinned. */
+/* Once the page is scrolled past the header, only the menu bar comes back
+   down from the top with a slow slide and stays pinned; the topbar scrolls away. */
 body.hdr-fixed { padding-top: var(--hdr-h, 0px); }
-body.hdr-fixed .topbar { position: fixed; top: 0; left: 0; right: 0; animation: hdrDrop .7s cubic-bezier(.2,.8,.2,1) both; }
-body.hdr-fixed > header { position: fixed; top: var(--topbar-h, 36px); left: 0; right: 0; animation: hdrDrop .7s cubic-bezier(.2,.8,.2,1) both; }
+body.hdr-fixed > header { position: fixed; top: 0; left: 0; right: 0; animation: hdrDrop .7s cubic-bezier(.2,.8,.2,1) both; }
 body.hdr-fixed > header .navbar { box-shadow: 0 8px 26px rgba(7,26,51,0.12); }
-@keyframes hdrDrop { from { transform: translateY(calc(-100% - var(--topbar-h, 36px))); } to { transform: none; } }
-@media (prefers-reduced-motion: reduce) { body.hdr-fixed .topbar, body.hdr-fixed > header { animation: none; } }
+@keyframes hdrDrop { from { transform: translateY(-100%); } to { transform: none; } }
+@media (prefers-reduced-motion: reduce) { body.hdr-fixed > header { animation: none; } }
 body > header .navbar::before { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; opacity: 0; transition: opacity .3s;
   background: linear-gradient(90deg, var(--gold) 0 50%, var(--sky) 50% 100%); }
 body > header .navbar.scrolled::before { opacity: 1; }

@@ -39,7 +39,7 @@
       if (!fixed) {
         var h = (topbar ? topbar.offsetHeight : 0) + hdr.offsetHeight;
         if (y > h + 120) {
-          document.documentElement.style.setProperty('--hdr-h', h + 'px');
+          document.documentElement.style.setProperty('--hdr-h', hdr.offsetHeight + 'px');
           document.body.classList.add('hdr-fixed');
         }
       } else if (y < 4) {
