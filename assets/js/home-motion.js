@@ -158,22 +158,7 @@
     });
   }
 
-  /* ---------- Why us: highlight the item in view, update counter ---------- */
-  var items = document.querySelectorAll('.why-item');
-  var cur = document.querySelector('.why-current');
-  var bar = document.querySelector('.why-bar i');
-  items.forEach(function (item, i) {
-    ScrollTrigger.create({
-      trigger: item, start: 'top 62%', end: 'bottom 38%',
-      onToggle: function (self) {
-        if (!self.isActive) { item.classList.remove('active'); return; }
-        items.forEach(function (o) { o.classList.remove('active'); });
-        item.classList.add('active');
-        if (cur) cur.textContent = ('0' + (i + 1)).slice(-2);
-        if (bar) bar.style.transform = 'scaleX(' + ((i + 1) / items.length) + ')';
-      }
-    });
-  });
+  /* Why us: counter and active card are driven by updates.js (pinned scroll). */
 
   /* ---------- Process: line draws, steps pop in sequence ---------- */
   var line = document.querySelector('.steps-line span');

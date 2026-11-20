@@ -8,20 +8,18 @@
 
   var WA_NUMBER = '923000091881'; /* +92-300-0091881, wa.me format */
 
-  /* ---------- Two-header system ----------
-     The main navbar scrolls away with the page. Once it is out of view, a
-     compact copy slides down from the top and stays fixed. */
+  /* ---------- Sticky header ----------
+     The whole header (topbar + navbar) stays pinned while scrolling, on
+     every page. The navbar tightens a little once the page moves. */
   var navbar = document.getElementById('navbar');
-  var fixedNav = null;
-  if (navbar) {
-    fixedNav = navbar.cloneNode(true);
-    fixedNav.removeAttribute('id');
-    fixedNav.classList.add('navbar-fixed');
-    fixedNav.setAttribute('aria-label', 'Primary (compact)');
-    fixedNav.querySelectorAll('[id]').forEach(function (el) { el.removeAttribute('id'); });
-    fixedNav.inert = true;
-    document.body.insertBefore(fixedNav, document.body.firstChild);
+  var topbar = document.querySelector('.topbar');
+  function setTopbarHeight() {
+    if (topbar) document.documentElement.style.setProperty('--topbar-h', topbar.offsetHeight + 'px');
   }
+  setTopbarHeight();
+  window.addEventListener('resize', setTopbarHeight);
+  if (topbar && 'ResizeObserver' in window) new ResizeObserver(setTopbarHeight).observe(topbar);
+
   /* Thin red-to-blue reading progress bar along the top edge */
   var progress = document.createElement('div');
   progress.className = 'scroll-progress';
@@ -31,10 +29,7 @@
   function onScroll() {
     var max = document.documentElement.scrollHeight - window.innerHeight;
     progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ')';
-    if (!navbar || !fixedNav) return;
-    var show = window.scrollY > navbar.offsetTop + navbar.offsetHeight + 40;
-    fixedNav.classList.toggle('show', show);
-    fixedNav.inert = !show;
+    if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 12);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();

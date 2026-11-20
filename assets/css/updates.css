@@ -1,0 +1,130 @@
+/* ============================================================
+   ORAKSER — HOMEPAGE UPDATES
+   Changes requested on top of the original design. Uses the site's
+   own theme tokens from main.css (navy, red --gold, blue --sky).
+   ============================================================ */
+
+/* ---------- Trust bar + kinetic strip: thinner ---------- */
+.trustbar { padding: 10px 0; }
+.trustbar-item .stat-num { font-size: 26px; }
+.trustbar-item .stat-label { font-size: 10.5px; }
+.kinetic { padding: 10px 0; }
+.kinetic span { font-size: clamp(26px, 3vw, 40px); letter-spacing: -.3px; }
+.kinetic i { font-size: clamp(14px, 1.4vw, 20px); }
+
+/* ---------- Regulatory & compliance bodies ---------- */
+.regs { position: relative; overflow: hidden; }
+.reg-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 16px; }
+.reg-card {
+  position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px;
+  padding: 20px 10px 18px; background: #fff; border: 1px solid var(--border); border-radius: 16px;
+  box-shadow: var(--shadow-sm); opacity: 0; transform: translateY(18px);
+  transition: opacity .6s, transform .6s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s;
+  transition-delay: var(--d, 0ms);
+}
+.reg-card.in-view { opacity: 1; transform: none; }
+.reg-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(225,29,46,0.45); transition-delay: 0ms; }
+.reg-card-logo {
+  position: relative; width: 112px; height: 76px; border-radius: 14px; background: #fff; display: flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 8px 10px; margin-bottom: 8px; box-shadow: 0 0 0 1px var(--border); transition: transform .35s;
+}
+.reg-card-logo::after {
+  content: ''; position: absolute; inset: -6px; border-radius: 18px; border: 2px dashed var(--sky); opacity: 0; transform: scale(.94);
+  transition: opacity .3s, transform .4s cubic-bezier(.3,1.6,.5,1);
+}
+.reg-card:hover .reg-card-logo { transform: scale(1.04); }
+.reg-card:hover .reg-card-logo::after { opacity: 1; transform: none; }
+.reg-card-logo img { width: 100%; height: 100%; object-fit: contain; }
+.reg-card-logo.is-pair img { width: 46%; }
+.reg-card strong { font-size: 13.5px; font-weight: 700; color: var(--navy); line-height: 1.25; }
+.reg-card-svc { font-size: 11.5px; color: var(--muted); line-height: 1.35; }
+
+/* ---------- Why choose us: left side stays, cards scroll ---------- */
+.why-list { will-change: transform; }
+.why-pin.is-pinned { padding: 0; overflow: clip; } /* hidden would stop the pin from sticking */
+.why-pin.is-pinned .why-pin-inner {
+  position: sticky; top: var(--pin-top, 100px); height: calc(100vh - var(--pin-top, 100px));
+  display: flex; align-items: flex-start; padding-top: 28px; overflow: hidden;
+}
+.why-pin.is-pinned .why-pin-inner > .container { width: 100%; }
+.why-pin.is-pinned .sticky-split { align-items: start; }
+.why-pin.is-pinned .sticky-col { position: static; }
+.why-pin.is-pinned .why-viewport {
+  height: calc(100vh - var(--pin-top, 100px) - 44px); margin-top: -28px; overflow: hidden; padding: 32px 10px 32px 12px;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+.why-pin.is-pinned .why-item { opacity: .55; transition: opacity .35s, background .3s, border-color .3s, transform .35s, box-shadow .35s; }
+.why-pin.is-pinned .why-item.active { opacity: 1; }
+.why-current { display: inline-block; }
+.why-current.flip { animation: whyFlip .45s cubic-bezier(.2,.8,.2,1); }
+@keyframes whyFlip { from { opacity: 0; transform: translateY(60%) rotateX(60deg); } to { opacity: 1; transform: none; } }
+/* Shorter laptop screens: tighten the pinned left column so it fits */
+@media (min-width: 1025px) and (max-height: 860px) {
+  .why-pin.is-pinned .sticky-col h2 { font-size: 32px; margin-bottom: 10px; }
+  .why-pin.is-pinned .sticky-col p { font-size: 14.5px; line-height: 1.6; margin-bottom: 16px; }
+  .why-pin.is-pinned .why-counter { margin-bottom: 10px; }
+  .why-pin.is-pinned .why-counter b { font-size: 38px; }
+  .why-pin.is-pinned .sticky-col .hero-btn-row { margin-bottom: 18px; }
+  .why-pin.is-pinned .reg-logos span { width: 44px; height: 44px; }
+  .why-pin.is-pinned .why-item { padding: 18px 22px; }
+}
+@media (min-width: 1025px) and (max-height: 700px) {
+  .why-pin.is-pinned .sticky-col p { display: none; }
+}
+
+/* ---------- Process: two arcs travel round each card ---------- */
+@property --arc { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+.step-v2::before {
+  content: ''; position: absolute; inset: -8px; border-radius: 128px 128px 30px 30px; padding: 3px; pointer-events: none;
+  background: conic-gradient(from var(--arc), var(--gold) 0deg 70deg, transparent 70deg 180deg, var(--sky) 180deg 250deg, transparent 250deg 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: arcSpin 7s linear infinite;
+}
+.step-v2:nth-child(odd)::before { animation-direction: reverse; }
+@keyframes arcSpin { to { --arc: 360deg; } }
+
+/* ---------- Clients & memberships: moving rows in colour ---------- */
+.logo-marquee { margin-bottom: 34px; }
+.logo-marquee:last-child { margin-bottom: 0; }
+.logo-track { gap: 14px; padding: 6px 0; animation-duration: 38s; }
+.logo-track .logo-tile { flex: 0 0 220px; }
+.logo-track .logo-tile img { filter: none; opacity: 1; }
+.logo-marquee:first-of-type .logo-tile { height: 120px; }
+.logo-marquee:first-of-type .logo-tile img { max-height: 84px; }
+
+/* ---------- Testimonials: slider with arrows ---------- */
+.t-slider { position: relative; display: flex; align-items: center; gap: 18px; }
+.t-viewport { overflow: hidden; flex: 1; padding: 8px 0; }
+.t-track { display: flex; transition: transform .55s cubic-bezier(.2,.8,.2,1); }
+.t-slide { flex: 0 0 calc((100% - 48px) / 3); margin-right: 24px; }
+.t-slide:hover { transform: none; }
+.t-arrow {
+  flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--border); background: #fff; color: var(--navy);
+  font-size: 17px; cursor: pointer; box-shadow: var(--shadow-sm); transition: background .2s, color .2s, transform .2s;
+}
+.t-arrow:hover { background: var(--gold); border-color: var(--gold); color: #fff; transform: scale(1.06); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1200px) { .reg-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 1024px) {
+  .t-slide { flex-basis: calc((100% - 24px) / 2); }
+  .step-v2::before { border-radius: 128px 128px 30px 30px; }
+}
+@media (max-width: 768px) {
+  .kinetic { padding: 8px 0; }
+  .kinetic span { font-size: 24px; }
+  .trustbar-item .stat-num { font-size: 22px; }
+  .reg-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .reg-card-logo { width: 100%; max-width: 120px; height: 68px; }
+  .logo-track .logo-tile { flex-basis: 160px; }
+  .t-slide { flex-basis: 100%; margin-right: 16px; }
+  .t-slider { gap: 8px; }
+  .t-arrow { width: 40px; height: 40px; font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reg-card { opacity: 1; transform: none; transition: none; }
+  .step-v2::before { animation: none; }
+  .why-current.flip { animation: none; }
+}
