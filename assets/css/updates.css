@@ -140,3 +140,12 @@
 /* Why choose us: left column sits in the middle of the pinned area,
    with equal space above and below. */
 .why-pin.is-pinned .sticky-col { align-self: center; margin-top: -12px; transform: translateY(6px); }
+
+/* ---------- Our clients: 18 brands, same right-to-left marquee ---------- */
+.clients-marquee .logo-track { animation-duration: 70s; }
+.clients-marquee .logo-tile { height: 120px; flex-basis: 220px; padding: 14px 18px; }
+.clients-marquee .logo-tile img { max-height: 88px; max-width: 100%; }
+@media (max-width: 768px) {
+  .clients-marquee .logo-tile { height: 96px; flex-basis: 160px; }
+  .clients-marquee .logo-tile img { max-height: 70px; }
+}
