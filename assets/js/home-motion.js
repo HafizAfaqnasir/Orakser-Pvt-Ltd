@@ -76,9 +76,9 @@
       });
     }
 
-    /* Hero content eases up and fades as you scroll away */
+    /* Hero content eases up slightly as you scroll away (stays fully sharp, no fade) */
     if (hasST) {
-      gsap.to('.hero-lead-inner', { yPercent: -8, opacity: .35, ease: 'none',
+      gsap.to('.hero-lead-inner', { yPercent: -8, ease: 'none',
         scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
     }
   }
