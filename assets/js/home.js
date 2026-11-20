@@ -46,6 +46,7 @@
     var currentEl = why.querySelector('.h-why-current');
     var fill = why.querySelector('.h-why-fill');
     var navbar = document.getElementById('navbar');
+    var left = why.querySelector('.h-why-left');
     var distance = 0, pinned = false, active = -1;
     var desktop = window.matchMedia('(min-width: 1025px)');
 
@@ -61,11 +62,18 @@
       pinned = desktop.matches && !reduceMotion;
       why.classList.toggle('is-pinned', pinned);
       track.style.transform = '';
-      if (!pinned) { why.style.height = ''; return; }
+      why.style.height = '';
       var pinTop = navbar ? navbar.offsetHeight : 0;
       why.style.setProperty('--pin-top', pinTop + 'px');
+      /* If the left column still can't fit on this screen, don't pin:
+         the section then scrolls normally and nothing gets cut off. */
+      if (pinned && left.offsetHeight > window.innerHeight - pinTop - 24) {
+        pinned = false;
+        why.classList.remove('is-pinned');
+      }
+      if (!pinned) return;
       /* How far the cards must travel so the last one ends fully in view. */
-      distance = Math.max(0, track.scrollHeight - viewport.clientHeight + 40);
+      distance = Math.max(0, track.scrollHeight - (viewport.clientHeight - 64) + 8);
       /* Extra scroll room: a little dwell on each card, so fast scrollers still see the change. */
       var dwell = Math.round(window.innerHeight * 0.12) * cards.length;
       why.style.height = (window.innerHeight - pinTop + distance + dwell) + 'px';
