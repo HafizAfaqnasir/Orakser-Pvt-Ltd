@@ -490,3 +490,83 @@
   body.is-scrolled .topbar-home .topbar-call { display: none; }
   body.is-scrolled .topbar-home .topbar-inner { padding: 8px 12px; }
 }
+
+/* ============================================================
+   ORIGINAL ORAKSER THEME
+   Navy + gold + cream, Playfair Display headings — the look of the
+   site as first supplied. Placed last so it wins over the layout
+   rules above; layouts and animations stay as they are.
+   ============================================================ */
+
+/* Header: original topbar + navbar, larger logo, form links in the topbar */
+.navbar-big-logo .nav-logo img { height: 64px; }
+.navbar-big-logo.scrolled .nav-logo img { height: 50px; }
+.topbar-forms-mini { display: flex; justify-content: center; gap: 10px; }
+.topbar-forms-mini a {
+  font-size: 11.5px; font-weight: 700; letter-spacing: .4px; color: var(--gold-light); white-space: nowrap;
+  border: 1px solid rgba(227,178,60,.45); padding: 4px 12px; border-radius: 20px; transition: background .2s, color .2s;
+}
+.topbar-forms-mini a:hover { background: var(--gold); color: var(--navy-deep); border-color: var(--gold); }
+
+/* Hero: original cinematic navy look over the city photos */
+.h-hero.hero-cinematic { display: block; min-height: 0; padding: 88px 0 72px; }
+.h-hero-tint {
+  z-index: 1;
+  background: radial-gradient(ellipse 900px 600px at 18% 20%, rgba(200,150,10,0.14) 0%, transparent 60%),
+              radial-gradient(ellipse 700px 500px at 88% 80%, rgba(28,44,84,0.55) 0%, transparent 55%),
+              linear-gradient(160deg, rgba(11,17,32,0.90) 0%, rgba(20,32,63,0.84) 55%, rgba(16,26,53,0.92) 100%);
+}
+.h-hero .h-hero-inner { z-index: 2; }
+.h-hero h1 { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; letter-spacing: 0; line-height: 1.12; font-size: clamp(34px, 4.4vw, 58px); }
+.h-hero-text p { color: rgba(255,255,255,0.72); }
+.h-hero-badge { background: rgba(200,150,10,0.14); border-color: rgba(200,150,10,0.4); }
+.h-hero .trust-badges { grid-row: 4; margin-top: 30px; padding-top: 24px; gap: 12px 26px; }
+.h-hero-arrow { background: rgba(255,255,255,0.08); color: var(--gold-light); border: 1px solid rgba(227,178,60,0.5); box-shadow: none; }
+.h-hero-arrow:hover { background: var(--gold); color: var(--navy-deep); }
+.h-hero-form { background: rgba(11,17,32,0.55); border: 1px solid rgba(200,150,10,0.35); border-radius: var(--radius); overflow: hidden; }
+.h-hero-form-head { background: var(--navy-deep); font-family: 'Playfair Display', serif; font-size: 17px; border-bottom-color: var(--gold); }
+.h-hero-form input, .h-hero-form select { border-radius: 8px; }
+.h-hero-submit { background: var(--gold); color: var(--navy-deep); font-size: 16px; letter-spacing: .4px; border-radius: 9px; }
+.h-hero-submit:hover { background: var(--gold-light); filter: none; }
+
+/* Stats bar + ticker in navy and gold */
+.h-trust { background: var(--navy-deep); border-bottom: 0; }
+.h-stat { border-right-color: rgba(255,255,255,0.08); }
+.h-stat .stat-num { color: var(--gold-light); }
+.h-stat-label { color: var(--muted-2); }
+.h-ticker { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06); }
+.h-ticker span.outline { -webkit-text-stroke-color: var(--gold-light); }
+.h-ticker i { color: var(--gold); }
+
+/* Section backgrounds alternate white and cream */
+.h-services, .h-team, .h-testi { background: var(--cream); }
+.h-slide { border-color: var(--cream); }
+.h-logo { border-color: var(--border); }
+
+/* Headings back in Playfair Display */
+.h-about-copy h2, .h-svc h3, .h-step h3, .h-member h3 { font-family: 'Playfair Display', Georgia, serif; }
+.h-about-copy h2 { color: var(--navy); font-weight: 700; }
+
+/* Navy + gold accents instead of royal blue and red */
+.h-svc-icon { background: var(--navy); box-shadow: inset 0 0 0 9px var(--navy), inset 0 0 0 12px var(--gold-light); }
+.h-svc-rule { background: linear-gradient(90deg, var(--gold) 0 8%, transparent 8% 14%, var(--gold) 14% 86%, transparent 86% 92%, var(--gold) 92%); }
+.h-step-icon { background: var(--cream-2); color: var(--navy); }
+.h-step.is-on .h-step-icon { background: var(--navy); color: var(--gold-light); box-shadow: 0 10px 22px rgba(20,32,63,.35); }
+.h-stamp { border-color: var(--gold); color: var(--gold-deep); }
+.h-team-lead-photo { background: linear-gradient(135deg, var(--cream-2), var(--cream)); }
+.h-member-photo { background: linear-gradient(180deg, var(--cream), var(--cream-2)); }
+.h-member-photo::after { background: linear-gradient(180deg, rgba(20,32,63,0) 45%, rgba(20,32,63,.55) 100%); }
+
+@media (max-width: 1024px) {
+  .h-hero.hero-cinematic { padding: 64px 0 56px; }
+}
+@media (max-width: 768px) {
+  .topbar-social { display: none; }
+  .topbar-inner { grid-template-columns: auto 1fr; gap: 10px; padding: 0 12px; }
+  .topbar-contacts { gap: 14px; }
+  .topbar-forms-mini { justify-content: flex-end; gap: 6px; }
+  .topbar-forms-mini a { font-size: 10px; padding: 3px 7px; letter-spacing: 0; }
+  .navbar-big-logo .nav-logo img { height: 48px; }
+  .h-hero.hero-cinematic { padding: 44px 0 48px; }
+  .h-hero .trust-badges { gap: 12px; }
+}

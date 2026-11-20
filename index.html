@@ -26,8 +26,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="assets/css/main.css?v=20261120f">
-<link rel="stylesheet" href="assets/css/home.css?v=20261120f">
+<link rel="stylesheet" href="assets/css/main.css?v=20261120h">
+<link rel="stylesheet" href="assets/css/home.css?v=20261120h">
 
 <script type="application/ld+json">
 {
@@ -76,16 +76,17 @@
 <a href="#main" class="skip-link">Skip to main content</a>
 
 <!-- TOPBAR -->
-<div class="topbar topbar-home">
+<div class="topbar">
   <div class="topbar-inner">
-    <a class="topbar-call" href="tel:+922135897959">
-      <i class="fas fa-phone-volume" aria-hidden="true"></i>
-      <span><small>Call Us</small><strong>021-35897959</strong></span>
-    </a>
-    <div class="topbar-forms">
-      <a href="services/company-registration.html" class="tb-pill tb-pill-gold">SECP Filing Form</a>
-      <a href="services/ntn-registration.html" class="tb-pill tb-pill-blue">NTN Form</a>
-      <a href="services/trademark-registration.html" class="tb-pill tb-pill-white">TM Filing Form</a>
+    <div class="topbar-contacts">
+      <a href="tel:+922135897959"><i class="fas fa-phone" aria-hidden="true"></i><span class="full">021-35897959</span></a>
+      <a href="https://wa.me/923000091881" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i><span class="full">0300-0091881</span></a>
+      <a href="mailto:info@orakser.com"><i class="fas fa-envelope" aria-hidden="true"></i><span class="full">info@orakser.com</span></a>
+    </div>
+    <div class="topbar-forms-mini">
+      <a href="services/company-registration.html">SECP Filing Form</a>
+      <a href="services/ntn-registration.html">NTN Form</a>
+      <a href="services/trademark-registration.html">TM Filing Form</a>
     </div>
     <div class="topbar-social">
       <a href="https://www.facebook.com/orakser/" target="_blank" rel="noopener" aria-label="Orakser on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
@@ -97,34 +98,41 @@
 
 <!-- NAVBAR -->
 <header>
-<nav class="navbar navbar-home" id="navbar" aria-label="Primary">
+<nav class="navbar navbar-big-logo" id="navbar" aria-label="Primary">
   <div class="nav-inner">
     <a href="/" class="nav-logo" aria-label="Orakser home">
       <img src="assets/img/logo.png" alt="Orakser — Orakzai Services logo" width="161" height="74" loading="eager">
+      <span class="nav-logo-divider" aria-hidden="true"></span>
+      <span class="nav-logo-text">
+        <span class="logo-eyebrow">Orakser</span>
+        <span class="logo-line">IP &amp; Business Law Since 2010</span>
+      </span>
     </a>
     <ul class="nav-links">
       <li><a href="/" class="active">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="services/ntn-registration.html">NTN</a></li>
-      <li><a href="services/copyright-registration.html">Copyright</a></li>
-      <li><a href="services/company-registration.html">Company</a></li>
-      <li><a href="services/trademark-registration.html">Trademark</a></li>
-      <li><a href="services/design-registration.html">Design</a></li>
-      <li><a href="services/patent-registration.html">Patent</a></li>
+      <li><a href="about.html">About</a></li>
       <li class="dropdown">
-        <button aria-haspopup="true">More <span class="nav-chevron">▾</span></button>
+        <button aria-haspopup="true">Services <span class="nav-chevron">▾</span></button>
         <div class="dropdown-menu">
+          <a href="services/trademark-registration.html"><i class="fas fa-copyright"></i> Trademark Registration</a>
+          <a href="services/copyright-registration.html"><i class="fas fa-feather-pointed"></i> Copyright Registration</a>
+          <a href="services/patent-registration.html"><i class="fas fa-lightbulb"></i> Patent Registration</a>
+          <a href="services/design-registration.html"><i class="fas fa-shapes"></i> Design Registration</a>
           <a href="services/brand-protection.html"><i class="fas fa-shield-halved"></i> Brand Protection</a>
+          <a href="services/company-registration.html"><i class="fas fa-building"></i> Company Registration</a>
+          <a href="services/ntn-registration.html"><i class="fas fa-file-invoice-dollar"></i> NTN Registration</a>
           <a href="services/licensing.html"><i class="fas fa-file-contract"></i> Licensing</a>
           <a href="services/franchising.html"><i class="fas fa-store"></i> Franchising</a>
           <a href="services/domain-registration.html"><i class="fas fa-globe"></i> Domain Registration</a>
-          <a href="services/trademark-search.html"><i class="fas fa-magnifying-glass"></i> Trademark Search</a>
-          <a href="services/iso-certification.html"><i class="fas fa-award"></i> ISO Certification</a>
           <a href="services/index.html" style="grid-column:1/-1; justify-content:center; font-weight:700; border-top:1px solid #eee; margin-top:6px; padding-top:12px;"><i class="fas fa-grip"></i> View All Services</a>
         </div>
       </li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
+    <div class="nav-cta">
+      <a href="contact.html" class="btn btn-outline-navy btn-sm">Call: 021-35897959</a>
+      <a href="https://wa.me/923000091881?text=Hello%2C%20I%20need%20a%20free%20consultation%20from%20Orakser." target="_blank" rel="noopener" class="btn btn-gold btn-sm">Free Consultation</a>
+    </div>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
       <span></span><span></span><span></span>
     </button>
@@ -139,7 +147,7 @@
     <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">✕</button>
   </div>
   <a href="/">Home</a>
-  <a href="about.html">About Us</a>
+  <a href="about.html">About</a>
   <button class="mobile-sub-toggle"><span>Services</span> <i class="fas fa-chevron-down"></i></button>
   <div class="mobile-sub">
     <a href="services/trademark-registration.html">Trademark Registration</a>
@@ -162,7 +170,7 @@
 
 <main id="main">
 <!-- HERO — slider with arrows + booking form -->
-<section class="h-hero" aria-label="Introduction">
+<section class="h-hero hero-cinematic" aria-label="Introduction">
   <div class="h-hero-slides" aria-hidden="true">
     <div class="h-hero-bg is-active" style="background-image:url('assets/img/photos/karachi-night.jpg')"></div>
     <div class="h-hero-bg" style="background-image:url('assets/img/photos/lahore-badshahi.jpg')"></div>
@@ -170,6 +178,11 @@
     <div class="h-hero-bg" style="background-image:url('assets/img/photos/karachi-mazar.jpg')"></div>
   </div>
   <div class="h-hero-tint" aria-hidden="true"></div>
+  <div class="hero-grid-lines" aria-hidden="true"></div>
+  <div class="hero-particles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <svg class="hero-skyline" viewBox="0 0 1440 180" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#0b1120" d="M0 180V120l40-10V90l30-5V60l25 5V40l35-10V70l30-8V30l40 10V80l50-15V50l30 8V85l45-12V45l35 10V90l60-18V60l30 10V95l55-15V50l40 12V90l50-10V60l35 8V95l60-10V55l45 10V90l40-8V60l55 12V95l40-8v93H0z" opacity="0.55"/>
+  </svg>
 
   <button class="h-hero-arrow h-hero-prev" type="button" aria-label="Previous slide"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
   <button class="h-hero-arrow h-hero-next" type="button" aria-label="Next slide"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
@@ -206,6 +219,11 @@
         <button type="button" aria-label="Slide 3"></button>
         <button type="button" aria-label="Slide 4"></button>
       </div>
+      <div class="trust-badges">
+        <div class="trust-badge"><i class="fas fa-shield-halved" aria-hidden="true"></i> Registered IPO Pakistan Agents</div>
+        <div class="trust-badge"><i class="fas fa-lock" aria-hidden="true"></i> Confidential &amp; Secure Process</div>
+        <div class="trust-badge"><i class="fas fa-headset" aria-hidden="true"></i> WhatsApp Support, 7 Days a Week</div>
+      </div>
     </div>
 
     <div class="h-hero-form">
@@ -228,7 +246,7 @@
             <option>Other</option>
           </select>
         </div>
-        <button type="submit" class="btn h-hero-submit"><i class="fab fa-whatsapp" aria-hidden="true"></i> Send Message</button>
+        <button type="submit" class="btn btn-gold btn-block h-hero-submit"><i class="fab fa-whatsapp" aria-hidden="true"></i> Send Message</button>
         <div class="form-success"><i class="fas fa-circle-check" aria-hidden="true"></i>Opening WhatsApp…</div>
       </form>
     </div>
@@ -754,8 +772,8 @@
   </a>
 </div>
 
-<script src="assets/js/main.js?v=20261120f"></script>
-<script src="assets/js/home.js?v=20261120f"></script>
+<script src="assets/js/main.js?v=20261120h"></script>
+<script src="assets/js/home.js?v=20261120h"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="assets/js/gsap-motion.js" defer></script>
