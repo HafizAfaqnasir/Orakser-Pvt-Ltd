@@ -128,3 +128,11 @@
   .step-v2::before { animation: none; }
   .why-current.flip { animation: none; }
 }
+
+/* ---------- Kinetic strip on brand red ---------- */
+.kinetic { background: var(--gold); border-top-color: rgba(255,255,255,0.12); }
+.kinetic::before { background: linear-gradient(90deg, var(--gold), transparent); }
+.kinetic::after { background: linear-gradient(-90deg, var(--gold), transparent); }
+.kinetic span { color: #fff; }
+.kinetic span.outline { color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,0.9); }
+.kinetic i { color: var(--navy-deep); }
