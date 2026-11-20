@@ -27,6 +27,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/home.css">
 
 <script type="application/ld+json">
 {
@@ -75,14 +76,17 @@
 <a href="#main" class="skip-link">Skip to main content</a>
 
 <!-- TOPBAR -->
-<div class="topbar">
+<div class="topbar topbar-home">
   <div class="topbar-inner">
-    <div class="topbar-contacts">
-      <a href="tel:+922135897959"><i class="fas fa-phone" aria-hidden="true"></i><span class="full">021-35897959</span></a>
-      <a href="https://wa.me/923000091881" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i><span class="full">0300-0091881</span></a>
-      <a href="mailto:info@orakser.com"><i class="fas fa-envelope" aria-hidden="true"></i><span class="full">info@orakser.com</span></a>
+    <a class="topbar-call" href="tel:+922135897959">
+      <i class="fas fa-phone-volume" aria-hidden="true"></i>
+      <span><small>Call Us</small><strong>021-35897959</strong></span>
+    </a>
+    <div class="topbar-forms">
+      <a href="services/company-registration.html" class="tb-pill tb-pill-gold">SECP Filing Form</a>
+      <a href="services/ntn-registration.html" class="tb-pill tb-pill-blue">NTN Form</a>
+      <a href="services/trademark-registration.html" class="tb-pill tb-pill-white">TM Filing Form</a>
     </div>
-    <div class="topbar-hours"><strong>Mon–Sat 9AM–7PM</strong> · 9 Offices Across Pakistan</div>
     <div class="topbar-social">
       <a href="https://www.facebook.com/orakser/" target="_blank" rel="noopener" aria-label="Orakser on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
       <a href="https://twitter.com/orakservices" target="_blank" rel="noopener" aria-label="Orakser on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
@@ -93,41 +97,34 @@
 
 <!-- NAVBAR -->
 <header>
-<nav class="navbar" id="navbar" aria-label="Primary">
+<nav class="navbar navbar-home" id="navbar" aria-label="Primary">
   <div class="nav-inner">
     <a href="/" class="nav-logo" aria-label="Orakser home">
       <img src="assets/img/logo.png" alt="Orakser — Orakzai Services logo" width="161" height="74" loading="eager">
-      <span class="nav-logo-divider" aria-hidden="true"></span>
-      <span class="nav-logo-text">
-        <span class="logo-eyebrow">Orakser</span>
-        <span class="logo-line">IP &amp; Business Law Since 2010</span>
-      </span>
     </a>
     <ul class="nav-links">
       <li><a href="/" class="active">Home</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services/ntn-registration.html">NTN</a></li>
+      <li><a href="services/copyright-registration.html">Copyright</a></li>
+      <li><a href="services/company-registration.html">Company</a></li>
+      <li><a href="services/trademark-registration.html">Trademark</a></li>
+      <li><a href="services/design-registration.html">Design</a></li>
+      <li><a href="services/patent-registration.html">Patent</a></li>
       <li class="dropdown">
-        <button aria-haspopup="true">Services <span class="nav-chevron">▾</span></button>
+        <button aria-haspopup="true">More <span class="nav-chevron">▾</span></button>
         <div class="dropdown-menu">
-          <a href="services/trademark-registration.html"><i class="fas fa-copyright"></i> Trademark Registration</a>
-          <a href="services/copyright-registration.html"><i class="fas fa-feather-pointed"></i> Copyright Registration</a>
-          <a href="services/patent-registration.html"><i class="fas fa-lightbulb"></i> Patent Registration</a>
-          <a href="services/design-registration.html"><i class="fas fa-shapes"></i> Design Registration</a>
           <a href="services/brand-protection.html"><i class="fas fa-shield-halved"></i> Brand Protection</a>
-          <a href="services/company-registration.html"><i class="fas fa-building"></i> Company Registration</a>
-          <a href="services/ntn-registration.html"><i class="fas fa-file-invoice-dollar"></i> NTN Registration</a>
           <a href="services/licensing.html"><i class="fas fa-file-contract"></i> Licensing</a>
           <a href="services/franchising.html"><i class="fas fa-store"></i> Franchising</a>
           <a href="services/domain-registration.html"><i class="fas fa-globe"></i> Domain Registration</a>
+          <a href="services/trademark-search.html"><i class="fas fa-magnifying-glass"></i> Trademark Search</a>
+          <a href="services/iso-certification.html"><i class="fas fa-award"></i> ISO Certification</a>
           <a href="services/index.html" style="grid-column:1/-1; justify-content:center; font-weight:700; border-top:1px solid #eee; margin-top:6px; padding-top:12px;"><i class="fas fa-grip"></i> View All Services</a>
         </div>
       </li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <div class="nav-cta">
-      <a href="contact.html" class="btn btn-outline-navy btn-sm">Call: 021-35897959</a>
-      <a href="https://wa.me/923000091881?text=Hello%2C%20I%20need%20a%20free%20consultation%20from%20Orakser." target="_blank" rel="noopener" class="btn btn-gold btn-sm">Free Consultation</a>
-    </div>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
       <span></span><span></span><span></span>
     </button>
@@ -142,7 +139,7 @@
     <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">✕</button>
   </div>
   <a href="/">Home</a>
-  <a href="about.html">About</a>
+  <a href="about.html">About Us</a>
   <button class="mobile-sub-toggle"><span>Services</span> <i class="fas fa-chevron-down"></i></button>
   <div class="mobile-sub">
     <a href="services/trademark-registration.html">Trademark Registration</a>
@@ -164,298 +161,376 @@
 </nav>
 
 <main id="main">
-<!-- HERO — cinematic full-bleed navy -->
-<section class="hero-cinematic">
-  <div class="hero-slideshow" aria-hidden="true">
-    <div class="hero-slide" style="background-image:url('/assets/img/photos/karachi-night.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('/assets/img/photos/lahore-badshahi.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('/assets/img/photos/islamabad-faisal.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('/assets/img/photos/karachi-mazar.jpg')"></div>
+<!-- HERO — slider with arrows + booking form -->
+<section class="h-hero" aria-label="Introduction">
+  <div class="h-hero-slides" aria-hidden="true">
+    <div class="h-hero-bg is-active" style="background-image:url('assets/img/photos/documents-laptop.jpg')"></div>
+    <div class="h-hero-bg" style="background-image:url('assets/img/photos/contract-sign.jpg')"></div>
+    <div class="h-hero-bg" style="background-image:url('assets/img/photos/brand-shield.jpg')"></div>
   </div>
-  <div class="hero-tint" aria-hidden="true"></div>
-  <div class="hero-grid-lines" aria-hidden="true"></div>
-  <div class="hero-particles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-  <svg class="hero-skyline" viewBox="0 0 1440 180" preserveAspectRatio="none" aria-hidden="true">
-    <path fill="#0b1120" d="M0 180V120l40-10V90l30-5V60l25 5V40l35-10V70l30-8V30l40 10V80l50-15V50l30 8V85l45-12V45l35 10V90l60-18V60l30 10V95l55-15V50l40 12V90l50-10V60l35 8V95l60-10V55l45 10V90l40-8V60l55 12V95l40-8v93H0z" opacity="0.55"/>
-  </svg>
-  <div class="container hero-cinematic-inner">
-    <div class="hero-badge"><i class="fas fa-star" aria-hidden="true"></i> Trusted Since 2010 · IPO Pakistan Registered Agents</div>
-    <h1>Protect Your Brand.<br>Register Your <em>Trademark.</em></h1>
-    <p class="hero-sub">Pakistan's most trusted Intellectual Property &amp; Business Registration law firm — serving clients across 9 cities and internationally. Expert legal protection for your brand, inventions and business, from filing to certificate.</p>
-    <div class="hero-btn-row">
-      <a href="https://wa.me/923000091881?text=Hello%2C%20I%20need%20a%20free%20consultation%20from%20Orakser." target="_blank" rel="noopener" class="btn btn-gold">
-        <i class="fab fa-whatsapp" aria-hidden="true"></i> Free Consultation
-      </a>
-      <a href="services/index.html" class="btn btn-outline-white">Explore Our Services <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-    </div>
-    <div class="trust-badges">
-      <div class="trust-badge"><i class="fas fa-shield-halved" aria-hidden="true"></i> Registered IPO Pakistan Agents</div>
-      <div class="trust-badge"><i class="fas fa-lock" aria-hidden="true"></i> Confidential &amp; Secure Process</div>
-      <div class="trust-badge"><i class="fas fa-headset" aria-hidden="true"></i> WhatsApp Support, 7 Days a Week</div>
-    </div>
-  </div>
-</section>
+  <div class="h-hero-tint" aria-hidden="true"></div>
 
-<!-- QUICK CONSULT — bridges hero into page body -->
-<div class="quick-consult">
-  <div class="quick-consult-card">
-    <div class="quick-consult-intro">
-      <h3>Get a Free Case Review</h3>
-      <p>Tell us what you need — we reply on WhatsApp, usually within 2 hours.</p>
-    </div>
-    <form class="wa-form quick-consult-form" data-wa-heading="Quick Consultation Request — Orakser Website" aria-label="Quick consultation form">
-      <input type="text" name="name" placeholder="Full Name" aria-label="Full Name" required>
-      <input type="tel" name="phone" placeholder="Phone Number" aria-label="Phone Number" required>
-      <select name="service" aria-label="Service required" required>
-        <option value="">Select Service</option>
-        <option>Trademark Registration</option>
-        <option>Copyright Registration</option>
-        <option>Patent Registration</option>
-        <option>Design Registration</option>
-        <option>Brand Protection</option>
-        <option>Company Registration</option>
-        <option>NTN Registration</option>
-        <option>Licensing</option>
-        <option>Franchising</option>
-        <option>Domain Registration</option>
-        <option>Other</option>
-      </select>
-      <button type="submit" class="btn btn-gold"><i class="fab fa-whatsapp" aria-hidden="true"></i> Send</button>
-      <div class="form-success"><i class="fas fa-circle-check" aria-hidden="true"></i>Opening WhatsApp…</div>
-    </form>
-  </div>
-</div>
+  <button class="h-hero-arrow h-hero-prev" type="button" aria-label="Previous slide"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+  <button class="h-hero-arrow h-hero-next" type="button" aria-label="Next slide"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
 
-<!-- STATS BAR -->
-<section class="stats-bar sec-tight" aria-label="Firm statistics">
-  <div class="container stats-grid">
-    <div class="stat-item"><span class="stat-num" data-target="15" data-suffix="+">0</span><span class="stat-label">Years Experience</span></div>
-    <div class="stat-item"><span class="stat-num" data-target="10000" data-suffix="+">0</span><span class="stat-label">Clients Served</span></div>
-    <div class="stat-item"><span class="stat-num" data-target="9" data-suffix="">0</span><span class="stat-label">City Offices</span></div>
-    <div class="stat-item"><span class="stat-num" data-target="23" data-suffix="+">0</span><span class="stat-label">Core Services</span></div>
-  </div>
-</section>
-
-<!-- REGULATORY TRUST STRIP -->
-<section class="gov-strip">
-  <div class="container">
-    <div class="gov-strip-label">We Register &amp; File With Pakistan's Regulatory Authorities</div>
-    <p class="gov-strip-sub">As registered agents and authorized filers, we handle your paperwork directly with these departments — no middlemen, no guesswork.</p>
-    <div class="marquee gov-grid">
-      <div class="marquee-track">
-        <div class="gov-badge"><div class="gov-badge-icon"><img src="assets/img/gov/ipo-pakistan.png" alt="IPO Pakistan" loading="lazy"></div><span class="gov-badge-label">IPO Pakistan</span></div>
-        <div class="gov-badge"><div class="gov-badge-icon"><img src="assets/img/gov/secp.png" alt="SECP" loading="lazy"></div><span class="gov-badge-label">SECP</span></div>
-        <div class="gov-badge"><div class="gov-badge-icon"><img src="assets/img/gov/fbr.png" alt="FBR Pakistan" loading="lazy"></div><span class="gov-badge-label">FBR Pakistan</span></div>
-        <div class="gov-badge"><div class="gov-badge-icon"><img src="assets/img/gov/drap.png" alt="DRAP" loading="lazy"></div><span class="gov-badge-label">DRAP</span></div>
-        <div class="gov-badge"><div class="gov-badge-icon is-mono">PEC</div><span class="gov-badge-label">PEC</span></div>
-        <div class="gov-badge"><div class="gov-badge-icon is-mono">PSEB</div><span class="gov-badge-label">PSEB</span></div>
-        <div class="gov-badge"><div class="gov-badge-icon"><img src="assets/img/gov/psqca.jpg" alt="PSQCA" loading="lazy"></div><span class="gov-badge-label">PSQCA</span></div>
-        <!-- duplicate for seamless loop -->
-        <div class="gov-badge" aria-hidden="true"><div class="gov-badge-icon"><img src="assets/img/gov/ipo-pakistan.png" alt="" loading="lazy"></div><span class="gov-badge-label">IPO Pakistan</span></div>
-        <div class="gov-badge" aria-hidden="true"><div class="gov-badge-icon"><img src="assets/img/gov/secp.png" alt="" loading="lazy"></div><span class="gov-badge-label">SECP</span></div>
-        <div class="gov-badge" aria-hidden="true"><div class="gov-badge-icon"><img src="assets/img/gov/fbr.png" alt="" loading="lazy"></div><span class="gov-badge-label">FBR Pakistan</span></div>
-        <div class="gov-badge" aria-hidden="true"><div class="gov-badge-icon"><img src="assets/img/gov/drap.png" alt="" loading="lazy"></div><span class="gov-badge-label">DRAP</span></div>
-        <div class="gov-badge" aria-hidden="true"><div class="gov-badge-icon is-mono">PEC</div><span class="gov-badge-label">PEC</span></div>
-        <div class="gov-badge" aria-hidden="true"><div class="gov-badge-icon is-mono">PSEB</div><span class="gov-badge-label">PSEB</span></div>
-        <div class="gov-badge" aria-hidden="true"><div class="gov-badge-icon"><img src="assets/img/gov/psqca.jpg" alt="" loading="lazy"></div><span class="gov-badge-label">PSQCA</span></div>
+  <div class="container h-hero-inner">
+    <div class="h-hero-copy" aria-live="polite">
+      <div class="h-hero-text is-active">
+        <div class="h-hero-badge"><i class="fas fa-star" aria-hidden="true"></i> Trusted Since 2010 · IPO Pakistan Registered Agents</div>
+        <h1>Your Trademark.<br>Your Identity.<br><em>Register in Pakistan.</em></h1>
+        <p>Secure exclusive rights to your brand name and logo with IPO Pakistan — from search to certificate.</p>
+      </div>
+      <div class="h-hero-text">
+        <div class="h-hero-badge"><i class="fas fa-building" aria-hidden="true"></i> SECP Company Incorporation</div>
+        <h1>Start Your Company<br>The Right Way.<br><em>Register with SECP.</em></h1>
+        <p>Sole proprietorship, partnership or private limited — incorporated, with NTN, in days.</p>
+      </div>
+      <div class="h-hero-text">
+        <div class="h-hero-badge"><i class="fas fa-shield-halved" aria-hidden="true"></i> Copyright · Patent · Design</div>
+        <h1>Protect What<br>You Create.<br><em>Own It Legally.</em></h1>
+        <p>Copyright, patent and design registration that keeps your work and inventions yours.</p>
+      </div>
+      <div class="h-hero-btns">
+        <a href="about.html" class="btn btn-gold">Learn More</a>
+        <a href="services/index.html" class="btn btn-white">Our Services</a>
+      </div>
+      <div class="h-hero-dots" role="tablist" aria-label="Choose slide">
+        <button type="button" class="is-active" aria-label="Slide 1"></button>
+        <button type="button" aria-label="Slide 2"></button>
+        <button type="button" aria-label="Slide 3"></button>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- TRUST STRIP -->
-<section class="trust-strip">
-  <div class="container">
-    <div class="trust-strip-label">Trusted By Businesses Across Pakistan</div>
-    <div class="marquee">
-      <div class="trust-logos marquee-track marquee-reverse">
-        <img src="assets/img/clients/client_1.jpg" alt="2nd Wife Restaurant — Orakser client" loading="lazy" width="130" height="55">
-        <img src="assets/img/clients/client_2.jpg" alt="Inventive Learning — Orakser client" loading="lazy" width="130" height="55">
-        <img src="assets/img/clients/client_3.jpg" alt="International Kangaroo Science Contest — Orakser client" loading="lazy" width="130" height="55">
-        <img src="assets/img/clients/client_4.jpg" alt="BRB Group — Orakser client" loading="lazy" width="130" height="55">
-        <img src="assets/img/clients/client_1.jpg" alt="" aria-hidden="true" loading="lazy" width="130" height="55">
-        <img src="assets/img/clients/client_2.jpg" alt="" aria-hidden="true" loading="lazy" width="130" height="55">
-        <img src="assets/img/clients/client_3.jpg" alt="" aria-hidden="true" loading="lazy" width="130" height="55">
-        <img src="assets/img/clients/client_4.jpg" alt="" aria-hidden="true" loading="lazy" width="130" height="55">
-      </div>
+    <div class="h-hero-form">
+      <div class="h-hero-form-head">Reserve Your Trademark or Company Registration Slot by Completing the Form</div>
+      <form class="wa-form" data-wa-heading="Registration Slot Request — Orakser Website" aria-label="Registration slot request">
+        <div class="field"><input type="text" name="brand" placeholder="Brand Name" aria-label="Brand Name" required></div>
+        <div class="field"><input type="text" name="business" placeholder="Nature of Business" aria-label="Nature of Business"></div>
+        <div class="field"><input type="text" name="name" placeholder="Owner Name" aria-label="Owner Name" required></div>
+        <div class="field"><input type="text" name="city" placeholder="City" aria-label="City"></div>
+        <div class="field"><input type="tel" name="phone" placeholder="Mobile (03XX-XXXXXXX)" aria-label="Mobile number" required></div>
+        <div class="field">
+          <select name="service" aria-label="Service required" required>
+            <option value="">Select Service</option>
+            <option>Trademark Registration</option>
+            <option>Company Registration (SECP)</option>
+            <option>NTN Registration</option>
+            <option>Copyright Registration</option>
+            <option>Patent Registration</option>
+            <option>Design Registration</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <button type="submit" class="btn h-hero-submit"><i class="fab fa-whatsapp" aria-hidden="true"></i> Send Message</button>
+        <div class="form-success"><i class="fas fa-circle-check" aria-hidden="true"></i>Opening WhatsApp…</div>
+      </form>
     </div>
   </div>
 </section>
 
-<!-- ABOUT TEASER -->
-<section class="sec sec-cream" id="about" aria-labelledby="about-h2">
-  <div class="container two-col">
-    <div class="reveal-left">
-      <div class="eyebrow">About Orakser</div>
-      <h2 id="about-h2" class="section-heading" style="font-size:clamp(26px,3.4vw,38px);color:var(--navy);font-weight:700;margin-bottom:18px;line-height:1.25;">Pakistan's Most Trusted IP &amp; Business Law Firm</h2>
-      <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:14px;">Orakser (Orakzai Services) handles all intellectual property matters — patent, design and trademark prosecution, licensing and consultation, clearance and validity searches, and litigation support.</p>
-      <p style="color:var(--muted);font-size:15px;line-height:1.8;">Since 2010 we've strived to give honest, prompt service that helps clients protect and use their intellectual property in a way that suits their real interests and business realities — with strong relationships across Pakistan and internationally.</p>
-      <ul class="col-list">
+<!-- TRUST BAR — thin stats + service ticker -->
+<section class="h-trust" aria-label="Firm statistics">
+  <div class="container h-stats">
+    <div class="h-stat"><span class="stat-num" data-target="15" data-suffix="+">0</span><span class="h-stat-label">Years of<br>Experience</span></div>
+    <div class="h-stat"><span class="stat-num" data-target="10000" data-suffix="+">0</span><span class="h-stat-label">Clients<br>Served</span></div>
+    <div class="h-stat"><span class="stat-num" data-target="9" data-suffix="">0</span><span class="h-stat-label">City Offices<br>in Pakistan</span></div>
+    <div class="h-stat"><span class="stat-num" data-target="20" data-suffix="+">0</span><span class="h-stat-label">Registration<br>Services</span></div>
+  </div>
+  <div class="h-ticker" aria-hidden="true">
+    <div class="h-ticker-track">
+      <span>Trademark</span><i>✦</i><span class="outline">Copyright</span><i>✦</i><span>Patent</span><i>✦</i><span class="outline">Design</span><i>✦</i><span>Company</span><i>✦</i><span class="outline">NTN</span><i>✦</i>
+      <span>Trademark</span><i>✦</i><span class="outline">Copyright</span><i>✦</i><span>Patent</span><i>✦</i><span class="outline">Design</span><i>✦</i><span>Company</span><i>✦</i><span class="outline">NTN</span><i>✦</i>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT US -->
+<section class="h-about" id="about" aria-labelledby="about-h2">
+  <div class="container h-about-grid">
+    <div class="h-about-media reveal-left">
+      <span class="h-about-frame" aria-hidden="true"></span>
+      <img src="assets/img/photos/contract-sign.jpg" alt="Orakser lawyer reviewing a registration contract" loading="lazy" width="640" height="560">
+      <div class="h-about-badge"><span>Est.</span><strong>2010</strong></div>
+    </div>
+    <div class="h-about-copy reveal-right">
+      <div class="eyebrow">About Us</div>
+      <h2 id="about-h2">Trademark, Company &amp; Copyright Registration in Pakistan</h2>
+      <p>Orakser (Orakzai Services) was founded in 2010 to make intellectual property and business registration simple for Pakistani businesses. We handle patent, design and trademark prosecution, licensing, clearance and validity searches, and litigation support.</p>
+      <p>Our team of lawyers and consultants works directly with IPO Pakistan, SECP and FBR, so you get honest advice, clear fees and one person who owns your case from first call to final certificate.</p>
+      <ul class="h-about-list">
+        <li><i class="fas fa-circle-check" aria-hidden="true"></i> Registered IPO Pakistan agents</li>
+        <li><i class="fas fa-circle-check" aria-hidden="true"></i> Fixed, written fee quotes</li>
+        <li><i class="fas fa-circle-check" aria-hidden="true"></i> Offices in 9 cities</li>
         <li><i class="fas fa-circle-check" aria-hidden="true"></i> Free initial consultation</li>
-        <li><i class="fas fa-circle-check" aria-hidden="true"></i> Registered agents with IPO Pakistan</li>
-        <li><i class="fas fa-circle-check" aria-hidden="true"></i> Fast, transparent, fixed-fee process</li>
-        <li><i class="fas fa-circle-check" aria-hidden="true"></i> Offices in 9 cities across Pakistan</li>
       </ul>
-      <div style="margin-top:28px;">
-        <a href="about.html" class="btn btn-navy">Our Story <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-      </div>
-    </div>
-    <div class="reveal-right">
-      <div class="about-right-box" style="background:linear-gradient(155deg,var(--navy),var(--navy-2));border-radius:var(--radius-lg);padding:38px 34px;">
-        <h3 style="font-family:'Playfair Display',serif;font-size:21px;color:var(--gold-light);margin-bottom:22px;line-height:1.35;">Why Businesses Choose Orakser</h3>
-        <ul style="display:flex;flex-direction:column;gap:16px;">
-          <li style="display:flex;gap:12px;color:#c8d2e8;font-size:14px;line-height:1.6;"><span style="color:var(--gold-light);font-size:18px;flex-shrink:0;">→</span> Trusted by 10,000+ clients since 2010</li>
-          <li style="display:flex;gap:12px;color:#c8d2e8;font-size:14px;line-height:1.6;"><span style="color:var(--gold-light);font-size:18px;flex-shrink:0;">→</span> Experienced team of IP lawyers &amp; consultants</li>
-          <li style="display:flex;gap:12px;color:#c8d2e8;font-size:14px;line-height:1.6;"><span style="color:var(--gold-light);font-size:18px;flex-shrink:0;">→</span> Affordable, transparent fees — no surprises</li>
-          <li style="display:flex;gap:12px;color:#c8d2e8;font-size:14px;line-height:1.6;"><span style="color:var(--gold-light);font-size:18px;flex-shrink:0;">→</span> Strong working relationship with IPO Pakistan</li>
-          <li style="display:flex;gap:12px;color:#c8d2e8;font-size:14px;line-height:1.6;"><span style="color:var(--gold-light);font-size:18px;flex-shrink:0;">→</span> End-to-end service — filing through to certificate</li>
-        </ul>
-      </div>
+      <a href="about.html" class="btn btn-navy">Read More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="sec sec-white" id="services" aria-labelledby="services-h2">
+<!-- TOP SERVICES -->
+<section class="h-services" id="services" aria-labelledby="services-h2">
   <div class="container">
     <div class="hdr reveal">
       <div class="eyebrow eyebrow-center">What We Do</div>
-      <h2 id="services-h2">Our Legal &amp; Business <em>Services</em></h2>
-      <p>Complete protection and registration services for your brand and business — from first filing to enforcement.</p>
+      <h2 id="services-h2">Our Top <em>Services</em></h2>
       <div class="gold-rule"></div>
     </div>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-card-icon"><i class="fas fa-copyright" aria-hidden="true"></i></div>
+    <div class="h-svc-grid">
+      <a class="h-svc reveal" href="services/trademark-registration.html">
+        <span class="h-svc-icon">TM</span>
         <h3>Trademark Registration</h3>
-        <p>Secure exclusive legal rights to your brand name and logo with IPO Pakistan.</p>
-        <a href="services/trademark-registration.html" class="service-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-card-icon"><i class="fas fa-feather-pointed" aria-hidden="true"></i></div>
+        <span class="h-svc-rule" aria-hidden="true"></span>
+        <p>The logo, sign or mark that represents your brand. Without a registered trademark, your products and services cannot be protected or recognised.</p>
+      </a>
+      <a class="h-svc reveal" href="services/copyright-registration.html">
+        <span class="h-svc-icon h-svc-icon-lg">©</span>
         <h3>Copyright Registration</h3>
-        <p>Protect your original creative, literary and artistic works under Pakistani copyright law.</p>
-        <a href="services/copyright-registration.html" class="service-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-card-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></div>
-        <h3>Patent Registration</h3>
-        <p>Patentability evaluation, search and full filing support for your inventions.</p>
-        <a href="services/patent-registration.html" class="service-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-card-icon"><i class="fas fa-shapes" aria-hidden="true"></i></div>
-        <h3>Design Registration</h3>
-        <p>Protect the visual design of your product — one of your business's most valuable assets.</p>
-        <a href="services/design-registration.html" class="service-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-card-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
-        <h3>Brand Protection</h3>
-        <p>Ongoing enforcement, watch services and anti-counterfeiting strategy for your brand.</p>
-        <a href="services/brand-protection.html" class="service-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-card-icon"><i class="fas fa-building" aria-hidden="true"></i></div>
-        <h3>Company Registration</h3>
-        <p>SECP company incorporation — sole proprietorship, partnership, or private limited.</p>
-        <a href="services/company-registration.html" class="service-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-card-icon"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i></div>
+        <span class="h-svc-rule" aria-hidden="true"></span>
+        <p>Gives you the right to copy, distribute and perform your original work — music, literature, art or software.</p>
+      </a>
+      <a class="h-svc reveal" href="services/ntn-registration.html">
+        <span class="h-svc-icon">NTN</span>
         <h3>NTN Registration</h3>
-        <p>National Tax Number registration for salaried individuals, businesses and companies.</p>
-        <a href="services/ntn-registration.html" class="service-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-card-icon"><i class="fas fa-file-contract" aria-hidden="true"></i></div>
-        <h3>Licensing</h3>
-        <p>Structure and register IP licensing agreements that protect your rights and revenue.</p>
-        <a href="services/licensing.html" class="service-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-card-icon"><i class="fas fa-store" aria-hidden="true"></i></div>
-        <h3>Franchising</h3>
-        <p>Take your successful business to scale with a legally sound franchise structure.</p>
-        <a href="services/franchising.html" class="service-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-      </div>
+        <span class="h-svc-rule" aria-hidden="true"></span>
+        <p>A unique ID issued by FBR that verifies your business for income tax, sales tax and other tax filings.</p>
+      </a>
+      <a class="h-svc reveal" href="services/company-registration.html">
+        <span class="h-svc-icon">SECP</span>
+        <h3>SECP Company Registration</h3>
+        <span class="h-svc-rule" aria-hidden="true"></span>
+        <p>Incorporate your sole proprietorship, partnership or private limited company with the Securities &amp; Exchange Commission of Pakistan.</p>
+      </a>
     </div>
-    <div class="text-center" style="margin-top:44px;">
-      <a href="services/index.html" class="btn btn-outline-navy">View All 23 Services <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+    <div class="text-center" style="margin-top:36px;">
+      <a href="services/index.html" class="btn btn-outline-navy">View All Services <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US — left side stays pinned while the six cards scroll -->
+<section class="h-why" id="why" aria-labelledby="why-h2">
+  <div class="h-why-pin">
+    <div class="container h-why-grid">
+      <div class="h-why-left">
+        <div class="eyebrow eyebrow-w">Why Choose Us</div>
+        <div class="h-why-count" aria-hidden="true">
+          <span class="h-why-current">01</span><span class="h-why-total">/ 06</span>
+          <span class="h-why-bar"><span class="h-why-fill"></span></span>
+        </div>
+        <h2 id="why-h2">Why Businesses Trust <em>Orakser</em></h2>
+        <p>Registration is paperwork, but getting it wrong costs you your brand. Here is what you get when Orakser handles your file.</p>
+        <a href="https://wa.me/923000091881?text=Hello%2C%20I%20need%20a%20free%20consultation%20from%20Orakser." target="_blank" rel="noopener" class="btn btn-gold">Get Free Consultation</a>
+        <div class="h-why-gov-label">We File Directly With</div>
+        <div class="h-why-gov">
+          <img src="assets/img/gov/ipo-pakistan.png" alt="IPO Pakistan" loading="lazy">
+          <img src="assets/img/gov/secp.png" alt="SECP" loading="lazy">
+          <img src="assets/img/gov/fbr.png" alt="FBR" loading="lazy">
+          <img src="assets/img/gov/drap.png" alt="DRAP" loading="lazy">
+          <span>PSEB</span>
+          <img src="assets/img/gov/psqca.jpg" alt="PSQCA" loading="lazy">
+        </div>
+      </div>
+      <div class="h-why-viewport">
+        <ol class="h-why-track">
+          <li class="h-why-card is-active">
+            <span class="h-why-num">01</span>
+            <span class="h-why-icon"><i class="fas fa-building-columns" aria-hidden="true"></i></span>
+            <div><h3>Registered IPO Pakistan Agents</h3><p>We file and follow up on your trademark, patent, design and copyright applications ourselves, with no middlemen.</p></div>
+          </li>
+          <li class="h-why-card">
+            <span class="h-why-num">02</span>
+            <span class="h-why-icon"><i class="fas fa-user-check" aria-hidden="true"></i></span>
+            <div><h3>One Named Point of Contact</h3><p>One person owns your case and keeps you updated. You are never passed between departments.</p></div>
+          </li>
+          <li class="h-why-card">
+            <span class="h-why-num">03</span>
+            <span class="h-why-icon"><i class="fas fa-scale-balanced" aria-hidden="true"></i></span>
+            <div><h3>Honest Advice First</h3><p>We tell you what you actually need, and what you don't, before you pay for anything.</p></div>
+          </li>
+          <li class="h-why-card">
+            <span class="h-why-num">04</span>
+            <span class="h-why-icon"><i class="fas fa-receipt" aria-hidden="true"></i></span>
+            <div><h3>Clear Fees, No Surprises</h3><p>Government fees and our professional fees are quoted up front, in writing.</p></div>
+          </li>
+          <li class="h-why-card">
+            <span class="h-why-num">05</span>
+            <span class="h-why-icon"><i class="fas fa-location-dot" aria-hidden="true"></i></span>
+            <div><h3>9 Offices Nationwide</h3><p>Karachi, Lahore, Islamabad, Faisalabad, Multan, Peshawar, Gujranwala, Kasur and Khanewal.</p></div>
+          </li>
+          <li class="h-why-card">
+            <span class="h-why-num">06</span>
+            <span class="h-why-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></span>
+            <div><h3>Replies Within 2 Hours</h3><p>Ask a question on WhatsApp or by phone and we usually reply within 2 hours in office hours.</p></div>
+          </li>
+        </ol>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- PROCESS -->
-<section class="sec sec-cream" aria-labelledby="process-h2">
+<section class="h-process" aria-labelledby="process-h2">
   <div class="container">
     <div class="hdr reveal">
       <div class="eyebrow eyebrow-center">How It Works</div>
-      <h2 id="process-h2">Four Steps From <em>Idea to Certificate</em></h2>
+      <h2 id="process-h2">From Idea to <em>Certificate</em></h2>
       <p>A clear, transparent process — you always know exactly where your case stands.</p>
       <div class="gold-rule"></div>
     </div>
-    <div class="process-steps reveal">
-      <div class="process-step">
-        <div class="step-circle">1</div>
-        <div class="step-title">Free Consultation</div>
-        <div class="step-desc">Share your requirement via call or WhatsApp — we assess it at no cost.</div>
+    <div class="h-steps">
+      <div class="h-step reveal">
+        <span class="h-step-no">1</span>
+        <h3>Searching</h3>
+        <p>We run a clearance search to check whether anyone already holds rights that could block your registration.</p>
+        <span class="h-step-icon"><i class="fas fa-magnifying-glass" aria-hidden="true"></i></span>
       </div>
-      <div class="step-connector" aria-hidden="true"></div>
-      <div class="process-step">
-        <div class="step-circle">2</div>
-        <div class="step-title">Search &amp; Documentation</div>
-        <div class="step-desc">We run clearance searches and prepare your filing documents.</div>
+      <div class="h-step reveal">
+        <span class="h-step-no">2</span>
+        <span class="h-step-icon"><i class="fas fa-file-signature" aria-hidden="true"></i></span>
+        <h3>Filing the Application</h3>
+        <p>We prepare and file your application with the right authority, with your details and full listing of goods or services.</p>
       </div>
-      <div class="step-connector" aria-hidden="true"></div>
-      <div class="process-step">
-        <div class="step-circle">3</div>
-        <div class="step-title">Filing &amp; Prosecution</div>
-        <div class="step-desc">We file with the relevant authority and manage examination on your behalf.</div>
+      <div class="h-step reveal">
+        <span class="h-step-no">3</span>
+        <h3>Examination</h3>
+        <p>The registry checks whether your mark or work is distinctive and compliant. We answer any objections for you.</p>
+        <span class="h-step-icon"><i class="fas fa-clipboard-check" aria-hidden="true"></i></span>
       </div>
-      <div class="step-connector" aria-hidden="true"></div>
-      <div class="process-step">
-        <div class="step-circle">4</div>
-        <div class="step-title">Certificate Issued</div>
-        <div class="step-desc">You receive your registration certificate — fully protected, on record.</div>
+      <div class="h-step reveal">
+        <span class="h-step-no">4</span>
+        <span class="h-step-icon"><i class="fas fa-newspaper" aria-hidden="true"></i></span>
+        <h3>Publication for Opposition</h3>
+        <p>Accepted marks are published in the journal so others can object. We handle the opposition period.</p>
+      </div>
+      <div class="h-step reveal">
+        <span class="h-step-no">5</span>
+        <h3>Certificate Issuance</h3>
+        <p>Once fees are paid the registration certificate is issued and you can use the ® symbol with your brand.</p>
+        <span class="h-step-icon"><i class="fas fa-award" aria-hidden="true"></i></span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="sec sec-white" aria-labelledby="testi-h2">
+<!-- TEAM -->
+<section class="h-team" aria-labelledby="team-h2">
+  <div class="container h-team-grid">
+    <div class="h-team-lead reveal-left">
+      <div class="h-team-lead-photo">
+        <img src="assets/img/team/abdul-qadir.jpg" alt="Abdul Qadir, Managing Partner at Orakser" loading="lazy" width="400" height="400">
+        <blockquote>“Honest advice and a clear process — that is how we protect our clients' brands.”<cite>Abdul Qadir · Managing Partner</cite></blockquote>
+      </div>
+      <h2 id="team-h2">Meet Your Dedicated <em>IP Team</em></h2>
+      <p>Abdul Qadir leads our team with one goal: protect your brand and business without unnecessary formalities or bureaucracy. Every case is handled with care, precision and regular updates.</p>
+      <a href="about.html" class="btn btn-navy">Read More</a>
+    </div>
+    <div class="h-team-right">
+      <div class="eyebrow">Our Team</div>
+      <div class="h-team-members">
+        <div class="h-member reveal">
+          <div class="h-member-photo"><img src="assets/img/team/noman.jpg" alt="Noman, Advocate — Trademark &amp; Copyright" loading="lazy" width="300" height="360"></div>
+          <h3>Noman</h3><span>Advocate — Trademark &amp; Copyright</span>
+        </div>
+        <div class="h-member reveal">
+          <div class="h-member-photo"><img src="assets/img/team/laiba.jpg" alt="Laiba, Advocate — Tax &amp; Company Registration" loading="lazy" width="300" height="360"></div>
+          <h3>Laiba</h3><span>Advocate — Tax &amp; Company Registration</span>
+        </div>
+        <div class="h-member reveal">
+          <div class="h-member-photo"><img src="assets/img/team/hafiz-afaq.jpg" alt="Hafiz Afaq, Client Success Lead" loading="lazy" width="300" height="360"></div>
+          <h3>Hafiz Afaq</h3><span>Client Success Lead</span>
+        </div>
+      </div>
+      <a href="about.html#team" class="btn btn-outline-navy">View More</a>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS & MEMBERSHIPS — two marquees in opposite directions -->
+<section class="h-brands" aria-labelledby="brands-h2">
+  <div class="container">
+    <div class="hdr reveal">
+      <div class="eyebrow eyebrow-center">Clients &amp; Memberships</div>
+      <h2 id="brands-h2">Brands We've <em>Worked With</em></h2>
+      <p>Businesses that trusted us with their brands, and the professional bodies we belong to.</p>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="h-brands-label">Our Clients</div>
+    <div class="marquee h-logo-row">
+      <div class="marquee-track h-logo-track">
+        <span class="h-logo"><img src="assets/img/clients/client_1.jpg" alt="2nd Wife Restaurant" loading="lazy"></span>
+        <span class="h-logo"><img src="assets/img/clients/client_2.jpg" alt="Inventive Learning" loading="lazy"></span>
+        <span class="h-logo"><img src="assets/img/clients/client_3.jpg" alt="International Kangaroo Science Contest" loading="lazy"></span>
+        <span class="h-logo"><img src="assets/img/clients/client_4.jpg" alt="BRB Group" loading="lazy"></span>
+        <span class="h-logo"><img src="assets/img/clients/client_1.jpg" alt="2nd Wife Restaurant" loading="lazy"></span>
+        <span class="h-logo"><img src="assets/img/clients/client_2.jpg" alt="Inventive Learning" loading="lazy"></span>
+        <span class="h-logo"><img src="assets/img/clients/client_3.jpg" alt="International Kangaroo Science Contest" loading="lazy"></span>
+        <span class="h-logo"><img src="assets/img/clients/client_4.jpg" alt="BRB Group" loading="lazy"></span>
+        <!-- duplicate set for a seamless loop -->
+        <span class="h-logo" aria-hidden="true"><img src="assets/img/clients/client_1.jpg" alt="" loading="lazy"></span>
+        <span class="h-logo" aria-hidden="true"><img src="assets/img/clients/client_2.jpg" alt="" loading="lazy"></span>
+        <span class="h-logo" aria-hidden="true"><img src="assets/img/clients/client_3.jpg" alt="" loading="lazy"></span>
+        <span class="h-logo" aria-hidden="true"><img src="assets/img/clients/client_4.jpg" alt="" loading="lazy"></span>
+        <span class="h-logo" aria-hidden="true"><img src="assets/img/clients/client_1.jpg" alt="" loading="lazy"></span>
+        <span class="h-logo" aria-hidden="true"><img src="assets/img/clients/client_2.jpg" alt="" loading="lazy"></span>
+        <span class="h-logo" aria-hidden="true"><img src="assets/img/clients/client_3.jpg" alt="" loading="lazy"></span>
+        <span class="h-logo" aria-hidden="true"><img src="assets/img/clients/client_4.jpg" alt="" loading="lazy"></span>
+      </div>
+    </div>
+    <div class="h-brands-label">Members Of</div>
+    <div class="marquee h-logo-row">
+      <div class="marquee-track marquee-reverse h-logo-track">
+        <span class="h-logo h-logo-word" style="--c:#1d4f91">INTA</span>
+        <span class="h-logo h-logo-word" style="--c:#0a7a8a">AIPPI</span>
+        <span class="h-logo h-logo-word" style="--c:#7a2e8e">MARQUES</span>
+        <span class="h-logo h-logo-word" style="--c:#c0392b">ECTA</span>
+        <span class="h-logo h-logo-word" style="--c:#1d4f91">INTA</span>
+        <span class="h-logo h-logo-word" style="--c:#0a7a8a">AIPPI</span>
+        <span class="h-logo h-logo-word" style="--c:#7a2e8e">MARQUES</span>
+        <span class="h-logo h-logo-word" style="--c:#c0392b">ECTA</span>
+        <span class="h-logo h-logo-word" style="--c:#1d4f91" aria-hidden="true">INTA</span>
+        <span class="h-logo h-logo-word" style="--c:#0a7a8a" aria-hidden="true">AIPPI</span>
+        <span class="h-logo h-logo-word" style="--c:#7a2e8e" aria-hidden="true">MARQUES</span>
+        <span class="h-logo h-logo-word" style="--c:#c0392b" aria-hidden="true">ECTA</span>
+        <span class="h-logo h-logo-word" style="--c:#1d4f91" aria-hidden="true">INTA</span>
+        <span class="h-logo h-logo-word" style="--c:#0a7a8a" aria-hidden="true">AIPPI</span>
+        <span class="h-logo h-logo-word" style="--c:#7a2e8e" aria-hidden="true">MARQUES</span>
+        <span class="h-logo h-logo-word" style="--c:#c0392b" aria-hidden="true">ECTA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS — slider with arrows -->
+<section class="h-testi" aria-labelledby="testi-h2">
   <div class="container">
     <div class="hdr reveal">
       <div class="eyebrow eyebrow-center">Client Feedback</div>
       <h2 id="testi-h2">What Our Clients <em>Say</em></h2>
       <div class="gold-rule"></div>
     </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"Orakser handled our trademark filing end-to-end and kept us updated at every step. Genuinely transparent and fast."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">A</div>
-          <div><div class="author-name">Ahsan Raza</div><div class="author-role">Restaurant Owner, Karachi</div></div>
+    <div class="h-slider" data-autoplay="6000">
+      <button class="h-slider-arrow h-slider-prev" type="button" aria-label="Previous review"><i class="fas fa-arrow-left" aria-hidden="true"></i></button>
+      <div class="h-slider-viewport">
+        <div class="h-slider-track">
+          <div class="testimonial-card h-slide">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Orakser handled our trademark filing end-to-end and kept us updated at every step. Genuinely transparent and fast."</p>
+            <div class="testimonial-author"><div class="author-avatar">A</div><div><div class="author-name">Ahsan Raza</div><div class="author-role">Restaurant Owner, Karachi</div></div></div>
+          </div>
+          <div class="testimonial-card h-slide">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"We registered our company and got our NTN through Orakser within days. Professional team, no hidden charges."</p>
+            <div class="testimonial-author"><div class="author-avatar">S</div><div><div class="author-name">Sana Khalid</div><div class="author-role">Founder, Education Startup</div></div></div>
+          </div>
+          <div class="testimonial-card h-slide">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Their brand protection advice saved us from a copycat competitor. Highly recommend for any growing business."</p>
+            <div class="testimonial-author"><div class="author-avatar">M</div><div><div class="author-name">Malik Hassan</div><div class="author-role">Director, BRB Group</div></div></div>
+          </div>
         </div>
       </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"We registered our company and got our NTN through Orakser within days. Professional team, no hidden charges."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">S</div>
-          <div><div class="author-name">Sana Khalid</div><div class="author-role">Founder, Education Startup</div></div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"Their brand protection advice saved us from a copycat competitor. Highly recommend for any growing business."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">M</div>
-          <div><div class="author-name">Malik Hassan</div><div class="author-role">Director, BRB Group</div></div>
-        </div>
-      </div>
+      <button class="h-slider-arrow h-slider-next" type="button" aria-label="Next review"><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
     </div>
   </div>
 </section>
@@ -575,6 +650,7 @@
 </div>
 
 <script src="assets/js/main.js"></script>
+<script src="assets/js/home.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="assets/js/gsap-motion.js" defer></script>
